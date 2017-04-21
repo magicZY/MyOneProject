@@ -8,6 +8,7 @@
 
 #import "MGBaseTabBarController.h"
 #import "MGTabBar.h"
+#import "CircleFriendViewController.h"
 
 @interface MGBaseTabBarController ()<MGTabBarDelegate>
 
@@ -59,7 +60,7 @@
     friends.view.backgroundColor = [UIColor whiteColor];
     [self setOneChildViewController:friends withImage:[UIImage imageNamed:@"tabbar2"] selectedImage:[UIImage imageNamed:@"tabbar2_selected"] title:@"活动"];
     
-    UIViewController *quiz = [[UIViewController alloc] init];
+    CircleFriendViewController *quiz = [[CircleFriendViewController alloc] init];
     quiz.view.backgroundColor = [UIColor purpleColor];
     [self setOneChildViewController:quiz withImage:[UIImage imageNamed:@"tabbar3"] selectedImage:[UIImage imageNamed:@"tabbar3_selected"] title:@"发现"];
     
@@ -71,7 +72,7 @@
 
 - (void)setOneChildViewController:(UIViewController *)viewController withImage:(UIImage *)image selectedImage:(UIImage *)selectedImage title:(NSString *)title
 {
-    viewController.title = title;
+//    viewController.title = title;
     
     viewController.tabBarItem.title = title;
     viewController.tabBarItem.image = image;

@@ -1,4 +1,5 @@
 platform :ios, '7.0'
 target 'CirCleOfFriend' do
 pod 'SDAutoLayout'
+pod 'SDWebImage'
 end

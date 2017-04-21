@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'B9AAB70EF8286D27C97BED70172ABB14'
+               BlueprintIdentifier = '677C82213F12E6A9E721302B01A24C03'
                BlueprintName = 'Pods-CirCleOfFriend'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-CirCleOfFriend.a'>

@@ -17,6 +17,8 @@
 		185828B81EA88B2D00655A5E /* MGBaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185828B71EA88B2D00655A5E /* MGBaseTabBarController.m */; };
 		185828BB1EA88B5400655A5E /* MGTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 185828BA1EA88B5400655A5E /* MGTabBar.m */; };
 		185828BE1EA88DEF00655A5E /* MGTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 185828BD1EA88DEF00655A5E /* MGTabBarButton.m */; };
+		185828C71EA99CAD00655A5E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185828C61EA99CAD00655A5E /* BaseViewController.m */; };
+		185828CA1EA9B6FE00655A5E /* CircleFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185828C91EA9B6FE00655A5E /* CircleFriendViewController.m */; };
 		2129F591954E4EAA6D6E8980 /* libPods-CirCleOfFriend.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2335360D6980547DCAD2A2B /* libPods-CirCleOfFriend.a */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +60,10 @@
 		185828BA1EA88B5400655A5E /* MGTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTabBar.m; sourceTree = "<group>"; };
 		185828BC1EA88DEF00655A5E /* MGTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTabBarButton.h; sourceTree = "<group>"; };
 		185828BD1EA88DEF00655A5E /* MGTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTabBarButton.m; sourceTree = "<group>"; };
+		185828C51EA99CAD00655A5E /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		185828C61EA99CAD00655A5E /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		185828C81EA9B6FE00655A5E /* CircleFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleFriendViewController.h; sourceTree = "<group>"; };
+		185828C91EA9B6FE00655A5E /* CircleFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleFriendViewController.m; sourceTree = "<group>"; };
 		6F6ED07EE0618D5EE3A66F0D /* Pods-CirCleOfFriend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CirCleOfFriend.release.xcconfig"; path = "Pods/Target Support Files/Pods-CirCleOfFriend/Pods-CirCleOfFriend.release.xcconfig"; sourceTree = "<group>"; };
 		B419C6D9A4FFBF33AD432749 /* Pods-CirCleOfFriend.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CirCleOfFriend.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CirCleOfFriend/Pods-CirCleOfFriend.debug.xcconfig"; sourceTree = "<group>"; };
 		F2335360D6980547DCAD2A2B /* libPods-CirCleOfFriend.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CirCleOfFriend.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +163,7 @@
 		185828B11EA889F200655A5E /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				185828C41EA99C9B00655A5E /* BaseViewController */,
 				185828B51EA88B2D00655A5E /* BaseTabBar */,
 			);
 			path = Base;
@@ -209,8 +216,19 @@
 		185828C31EA8C3E700655A5E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				185828C81EA9B6FE00655A5E /* CircleFriendViewController.h */,
+				185828C91EA9B6FE00655A5E /* CircleFriendViewController.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		185828C41EA99C9B00655A5E /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				185828C51EA99CAD00655A5E /* BaseViewController.h */,
+				185828C61EA99CAD00655A5E /* BaseViewController.m */,
+			);
+			path = BaseViewController;
 			sourceTree = "<group>";
 		};
 		88187973810034229B4CDD42 /* Pods */ = {
@@ -415,6 +433,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				185828B81EA88B2D00655A5E /* MGBaseTabBarController.m in Sources */,
+				185828C71EA99CAD00655A5E /* BaseViewController.m in Sources */,
+				185828CA1EA9B6FE00655A5E /* CircleFriendViewController.m in Sources */,
 				185828BB1EA88B5400655A5E /* MGTabBar.m in Sources */,
 				185828831EA87E4600655A5E /* AppDelegate.m in Sources */,
 				185828BE1EA88DEF00655A5E /* MGTabBarButton.m in Sources */,
