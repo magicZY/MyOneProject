@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		183B13AC1EAE56C7009DCC28 /* MGPhotoContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B13AB1EAE56C7009DCC28 /* MGPhotoContainerView.m */; };
+		183B13B61EAE5870009DCC28 /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B13B01EAE5870009DCC28 /* SDBrowserImageView.m */; };
+		183B13B71EAE5870009DCC28 /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B13B21EAE5870009DCC28 /* SDPhotoBrowser.m */; };
+		183B13B81EAE5870009DCC28 /* SDWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B13B51EAE5870009DCC28 /* SDWaitingView.m */; };
 		185828801EA87E4600655A5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1858287F1EA87E4600655A5E /* main.m */; };
 		185828831EA87E4600655A5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 185828821EA87E4600655A5E /* AppDelegate.m */; };
 		185828891EA87E4600655A5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185828871EA87E4600655A5E /* Main.storyboard */; };
@@ -51,6 +55,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		183B13AA1EAE56C7009DCC28 /* MGPhotoContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGPhotoContainerView.h; sourceTree = "<group>"; };
+		183B13AB1EAE56C7009DCC28 /* MGPhotoContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGPhotoContainerView.m; sourceTree = "<group>"; };
+		183B13AF1EAE5870009DCC28 /* SDBrowserImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBrowserImageView.h; sourceTree = "<group>"; };
+		183B13B01EAE5870009DCC28 /* SDBrowserImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBrowserImageView.m; sourceTree = "<group>"; };
+		183B13B11EAE5870009DCC28 /* SDPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowser.h; sourceTree = "<group>"; };
+		183B13B21EAE5870009DCC28 /* SDPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPhotoBrowser.m; sourceTree = "<group>"; };
+		183B13B31EAE5870009DCC28 /* SDPhotoBrowserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowserConfig.h; sourceTree = "<group>"; };
+		183B13B41EAE5870009DCC28 /* SDWaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWaitingView.h; sourceTree = "<group>"; };
+		183B13B51EAE5870009DCC28 /* SDWaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWaitingView.m; sourceTree = "<group>"; };
 		1858287B1EA87E4600655A5E /* CirCleOfFriend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CirCleOfFriend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1858287F1EA87E4600655A5E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		185828811EA87E4600655A5E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -119,6 +132,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		183B13A91EAE56AD009DCC28 /* MGPhotoContainer */ = {
+			isa = PBXGroup;
+			children = (
+				183B13AA1EAE56C7009DCC28 /* MGPhotoContainerView.h */,
+				183B13AB1EAE56C7009DCC28 /* MGPhotoContainerView.m */,
+			);
+			path = MGPhotoContainer;
+			sourceTree = "<group>";
+		};
+		183B13AD1EAE5870009DCC28 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				183B13AE1EAE5870009DCC28 /* SDPhotoBrowser */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		183B13AE1EAE5870009DCC28 /* SDPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				183B13AF1EAE5870009DCC28 /* SDBrowserImageView.h */,
+				183B13B01EAE5870009DCC28 /* SDBrowserImageView.m */,
+				183B13B11EAE5870009DCC28 /* SDPhotoBrowser.h */,
+				183B13B21EAE5870009DCC28 /* SDPhotoBrowser.m */,
+				183B13B31EAE5870009DCC28 /* SDPhotoBrowserConfig.h */,
+				183B13B41EAE5870009DCC28 /* SDWaitingView.h */,
+				183B13B51EAE5870009DCC28 /* SDWaitingView.m */,
+			);
+			path = SDPhotoBrowser;
+			sourceTree = "<group>";
+		};
 		185828721EA87E4600655A5E = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +188,7 @@
 		1858287D1EA87E4600655A5E /* CirCleOfFriend */ = {
 			isa = PBXGroup;
 			children = (
+				183B13AD1EAE5870009DCC28 /* Lib */,
 				185828D61EADA10400655A5E /* resource */,
 				185828BF1EA8C2D600655A5E /* Mine */,
 				185828C01EA8C2D600655A5E /* Finder */,
@@ -228,6 +273,7 @@
 		185828C11EA8C3E700655A5E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				183B13A91EAE56AD009DCC28 /* MGPhotoContainer */,
 				185828CE1EA9F81700655A5E /* cell */,
 			);
 			path = Views;
@@ -502,15 +548,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				183B13B71EAE5870009DCC28 /* SDPhotoBrowser.m in Sources */,
 				185828B81EA88B2D00655A5E /* MGBaseTabBarController.m in Sources */,
 				185828C71EA99CAD00655A5E /* BaseViewController.m in Sources */,
 				185828D41EA9FE7A00655A5E /* CircleFriendModel.m in Sources */,
 				185828CA1EA9B6FE00655A5E /* CircleFriendViewController.m in Sources */,
 				185828BB1EA88B5400655A5E /* MGTabBar.m in Sources */,
 				185828831EA87E4600655A5E /* AppDelegate.m in Sources */,
+				183B13B61EAE5870009DCC28 /* SDBrowserImageView.m in Sources */,
 				185828BE1EA88DEF00655A5E /* MGTabBarButton.m in Sources */,
 				185828801EA87E4600655A5E /* main.m in Sources */,
+				183B13B81EAE5870009DCC28 /* SDWaitingView.m in Sources */,
 				185828D11EA9F81700655A5E /* CircleFriendCell.m in Sources */,
+				183B13AC1EAE56C7009DCC28 /* MGPhotoContainerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

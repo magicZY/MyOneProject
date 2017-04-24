@@ -55,6 +55,15 @@
 
     cell.indexPath = indexPath;
     
+    __weak typeof(self) weakSelf = self;
+    if (!cell.moreButtonClickedBlock) {
+        [cell setMoreButtonClickedBlock:^(NSIndexPath *indexPath) {
+            CircleFriendModel *model = weakSelf.dataSource[indexPath.row];
+            model.isOpening = !model.isOpening;
+            [weakSelf.circleFriendTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }];
+    }
+    
     [cell useCellFrameCacheWithIndexPath:indexPath tableView:tableView];
     
     cell.dataModel = self.dataSource[indexPath.row];

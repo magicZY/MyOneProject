@@ -8,6 +8,7 @@
 
 #import "CircleFriendCell.h"
 #import "UIView+SDAutoLayout.h"
+#import "MGPhotoContainerView.h"
 
 CGFloat maxContentLabelHeight = 0; // 根据具体font而定
 
@@ -15,14 +16,16 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
 {
     
 }
-@property (nonatomic, strong)UIImageView *avatar; //头像
-@property (nonatomic, strong)UILabel *nameLabel; //名字
-@property (nonatomic, strong)UILabel *contentLabel; //内容
+@property (nonatomic, strong) UIImageView *avatar; //头像
+@property (nonatomic, strong) UILabel *nameLabel; //名字
+@property (nonatomic, strong) UILabel *contentLabel; //内容
+@property (nonatomic, strong) UIButton *moreButton; //收起展开按钮
+@property (nonatomic, strong) MGPhotoContainerView *picContainerView;
 @end
 
 @implementation CircleFriendCell
 
-
+//[[SDImageCache sharedImageCache] setValue:nil forKey:@"memCache"];
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -107,6 +110,43 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
     return _contentLabel;
 }
 
+- (UIButton *)moreButton
+{
+    if (!_moreButton)
+    {
+        _moreButton = [UIButton new];
+        [self.contentView addSubview:_moreButton];
+        [_moreButton setTitle:@"全文" forState:UIControlStateNormal];
+        [_moreButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [_moreButton addTarget:self action:@selector(moreButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+        _moreButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        
+        _moreButton.sd_layout
+        .leftEqualToView(_contentLabel)
+        .topSpaceToView(_contentLabel, 0)
+        .widthIs(30);
+    }
+    
+    return _moreButton;
+
+}
+
+- (MGPhotoContainerView *)picContainerView
+{
+    if (!_picContainerView) {
+        
+        _picContainerView = [MGPhotoContainerView new];
+        
+        [self.contentView addSubview:_picContainerView];
+        
+        _picContainerView.sd_layout
+        .leftEqualToView(_contentLabel); // 已经在内部实现宽度和高度自适应所以不需要再设置宽度高度，top值是具体有无图片在setModel方法中设置
+    }
+    
+    return _picContainerView;
+    
+}
+
 #pragma mark - setter
 
 - (void)setDataModel:(CircleFriendModel *)dataModel
@@ -115,23 +155,39 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
     self.avatar.image = [UIImage imageNamed:dataModel.avatar];
     self.nameLabel.text = dataModel.username;
     self.contentLabel.text = dataModel.content;
+    self.picContainerView.picPathStringsArray = dataModel.picNameAr;
     
     if (dataModel.shouldShowMoreButton) { // 如果文字高度超过60
-//        _moreButton.sd_layout.heightIs(20);
-//        _moreButton.hidden = NO;
-        self.contentLabel.sd_layout.maxHeightIs(MAXFLOAT);
-//        if (dataModel.isOpening) { // 如果需要展开
-//            _contentLabel.sd_layout.maxHeightIs(MAXFLOAT);
-////            [_moreButton setTitle:@"收起" forState:UIControlStateNormal];
-//        } else {
-//            _contentLabel.sd_layout.maxHeightIs(maxContentLabelHeight);
-////            [_moreButton setTitle:@"全文" forState:UIControlStateNormal];
-//        }
+        self.moreButton.sd_layout.heightIs(20);
+        _moreButton.hidden = NO;
+        
+        if (dataModel.isOpening) { // 如果需要展开
+            _contentLabel.sd_layout.maxHeightIs(MAXFLOAT);
+            [_moreButton setTitle:@"收起" forState:UIControlStateNormal];
+        } else {
+            _contentLabel.sd_layout.maxHeightIs(maxContentLabelHeight);
+            [_moreButton setTitle:@"全文" forState:UIControlStateNormal];
+        }
     } else {
-//        _moreButton.sd_layout.heightIs(0);
-//        _moreButton.hidden = YES;
+        self.moreButton.sd_layout.heightIs(0);
+        _moreButton.hidden = YES;
     }
     
-    [self setupAutoHeightWithBottomView:_contentLabel bottomMargin:15];
+    CGFloat picContainerTopMargin = 0;
+    if (dataModel.picNameAr.count) {
+        picContainerTopMargin = 10;
+    }
+    _picContainerView.sd_layout.topSpaceToView(_moreButton, picContainerTopMargin);
+    
+    [self setupAutoHeightWithBottomView:_picContainerView bottomMargin:15];
+}
+
+#pragma mark - private actions
+
+- (void)moreButtonClicked
+{
+    if (self.moreButtonClickedBlock) {
+        self.moreButtonClickedBlock(self.indexPath);
+    }
 }
 @end
