@@ -19,6 +19,17 @@
 		185828BE1EA88DEF00655A5E /* MGTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 185828BD1EA88DEF00655A5E /* MGTabBarButton.m */; };
 		185828C71EA99CAD00655A5E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185828C61EA99CAD00655A5E /* BaseViewController.m */; };
 		185828CA1EA9B6FE00655A5E /* CircleFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185828C91EA9B6FE00655A5E /* CircleFriendViewController.m */; };
+		185828D11EA9F81700655A5E /* CircleFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185828D01EA9F81700655A5E /* CircleFriendCell.m */; };
+		185828D41EA9FE7A00655A5E /* CircleFriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 185828D31EA9FE7A00655A5E /* CircleFriendModel.m */; };
+		185828DC1EADA10E00655A5E /* 10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 185828D71EADA10E00655A5E /* 10.jpg */; };
+		185828DD1EADA10E00655A5E /* 11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 185828D81EADA10E00655A5E /* 11.jpg */; };
+		185828DE1EADA10E00655A5E /* 12.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 185828D91EADA10E00655A5E /* 12.jpg */; };
+		185828DF1EADA10E00655A5E /* 13.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 185828DA1EADA10E00655A5E /* 13.jpg */; };
+		185828E01EADA10E00655A5E /* 14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 185828DB1EADA10E00655A5E /* 14.jpg */; };
+		185828E51EADA15D00655A5E /* 15.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 185828E11EADA15D00655A5E /* 15.jpg */; };
+		185828E61EADA15D00655A5E /* 16.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 185828E21EADA15D00655A5E /* 16.jpg */; };
+		185828E71EADA15D00655A5E /* 17.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 185828E31EADA15D00655A5E /* 17.jpg */; };
+		185828E81EADA15D00655A5E /* 18.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 185828E41EADA15D00655A5E /* 18.jpg */; };
 		2129F591954E4EAA6D6E8980 /* libPods-CirCleOfFriend.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2335360D6980547DCAD2A2B /* libPods-CirCleOfFriend.a */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +75,19 @@
 		185828C61EA99CAD00655A5E /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		185828C81EA9B6FE00655A5E /* CircleFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleFriendViewController.h; sourceTree = "<group>"; };
 		185828C91EA9B6FE00655A5E /* CircleFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleFriendViewController.m; sourceTree = "<group>"; };
+		185828CF1EA9F81700655A5E /* CircleFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleFriendCell.h; sourceTree = "<group>"; };
+		185828D01EA9F81700655A5E /* CircleFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleFriendCell.m; sourceTree = "<group>"; };
+		185828D21EA9FE7A00655A5E /* CircleFriendModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleFriendModel.h; sourceTree = "<group>"; };
+		185828D31EA9FE7A00655A5E /* CircleFriendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleFriendModel.m; sourceTree = "<group>"; };
+		185828D71EADA10E00655A5E /* 10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.jpg; sourceTree = "<group>"; };
+		185828D81EADA10E00655A5E /* 11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 11.jpg; sourceTree = "<group>"; };
+		185828D91EADA10E00655A5E /* 12.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 12.jpg; sourceTree = "<group>"; };
+		185828DA1EADA10E00655A5E /* 13.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 13.jpg; sourceTree = "<group>"; };
+		185828DB1EADA10E00655A5E /* 14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 14.jpg; sourceTree = "<group>"; };
+		185828E11EADA15D00655A5E /* 15.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 15.jpg; sourceTree = "<group>"; };
+		185828E21EADA15D00655A5E /* 16.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 16.jpg; sourceTree = "<group>"; };
+		185828E31EADA15D00655A5E /* 17.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 17.jpg; sourceTree = "<group>"; };
+		185828E41EADA15D00655A5E /* 18.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 18.jpg; sourceTree = "<group>"; };
 		6F6ED07EE0618D5EE3A66F0D /* Pods-CirCleOfFriend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CirCleOfFriend.release.xcconfig"; path = "Pods/Target Support Files/Pods-CirCleOfFriend/Pods-CirCleOfFriend.release.xcconfig"; sourceTree = "<group>"; };
 		B419C6D9A4FFBF33AD432749 /* Pods-CirCleOfFriend.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CirCleOfFriend.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CirCleOfFriend/Pods-CirCleOfFriend.debug.xcconfig"; sourceTree = "<group>"; };
 		F2335360D6980547DCAD2A2B /* libPods-CirCleOfFriend.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CirCleOfFriend.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +144,7 @@
 		1858287D1EA87E4600655A5E /* CirCleOfFriend */ = {
 			isa = PBXGroup;
 			children = (
+				185828D61EADA10400655A5E /* resource */,
 				185828BF1EA8C2D600655A5E /* Mine */,
 				185828C01EA8C2D600655A5E /* Finder */,
 				185828B11EA889F200655A5E /* Base */,
@@ -163,6 +188,7 @@
 		185828B11EA889F200655A5E /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				185828D51EAD89BF00655A5E /* BaseModel */,
 				185828C41EA99C9B00655A5E /* BaseViewController */,
 				185828B51EA88B2D00655A5E /* BaseTabBar */,
 			);
@@ -202,6 +228,7 @@
 		185828C11EA8C3E700655A5E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				185828CE1EA9F81700655A5E /* cell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -209,6 +236,8 @@
 		185828C21EA8C3E700655A5E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				185828D21EA9FE7A00655A5E /* CircleFriendModel.h */,
+				185828D31EA9FE7A00655A5E /* CircleFriendModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -229,6 +258,38 @@
 				185828C61EA99CAD00655A5E /* BaseViewController.m */,
 			);
 			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		185828CE1EA9F81700655A5E /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				185828CF1EA9F81700655A5E /* CircleFriendCell.h */,
+				185828D01EA9F81700655A5E /* CircleFriendCell.m */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		185828D51EAD89BF00655A5E /* BaseModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BaseModel;
+			sourceTree = "<group>";
+		};
+		185828D61EADA10400655A5E /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				185828D71EADA10E00655A5E /* 10.jpg */,
+				185828D81EADA10E00655A5E /* 11.jpg */,
+				185828D91EADA10E00655A5E /* 12.jpg */,
+				185828DA1EADA10E00655A5E /* 13.jpg */,
+				185828DB1EADA10E00655A5E /* 14.jpg */,
+				185828E11EADA15D00655A5E /* 15.jpg */,
+				185828E21EADA15D00655A5E /* 16.jpg */,
+				185828E31EADA15D00655A5E /* 17.jpg */,
+				185828E41EADA15D00655A5E /* 18.jpg */,
+			);
+			path = resource;
 			sourceTree = "<group>";
 		};
 		88187973810034229B4CDD42 /* Pods */ = {
@@ -357,9 +418,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185828E61EADA15D00655A5E /* 16.jpg in Resources */,
+				185828DD1EADA10E00655A5E /* 11.jpg in Resources */,
+				185828E81EADA15D00655A5E /* 18.jpg in Resources */,
 				1858288E1EA87E4600655A5E /* LaunchScreen.storyboard in Resources */,
+				185828E01EADA10E00655A5E /* 14.jpg in Resources */,
+				185828E71EADA15D00655A5E /* 17.jpg in Resources */,
+				185828DE1EADA10E00655A5E /* 12.jpg in Resources */,
 				1858288B1EA87E4600655A5E /* Assets.xcassets in Resources */,
+				185828DC1EADA10E00655A5E /* 10.jpg in Resources */,
 				185828891EA87E4600655A5E /* Main.storyboard in Resources */,
+				185828DF1EADA10E00655A5E /* 13.jpg in Resources */,
+				185828E51EADA15D00655A5E /* 15.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,11 +504,13 @@
 			files = (
 				185828B81EA88B2D00655A5E /* MGBaseTabBarController.m in Sources */,
 				185828C71EA99CAD00655A5E /* BaseViewController.m in Sources */,
+				185828D41EA9FE7A00655A5E /* CircleFriendModel.m in Sources */,
 				185828CA1EA9B6FE00655A5E /* CircleFriendViewController.m in Sources */,
 				185828BB1EA88B5400655A5E /* MGTabBar.m in Sources */,
 				185828831EA87E4600655A5E /* AppDelegate.m in Sources */,
 				185828BE1EA88DEF00655A5E /* MGTabBarButton.m in Sources */,
 				185828801EA87E4600655A5E /* main.m in Sources */,
+				185828D11EA9F81700655A5E /* CircleFriendCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
