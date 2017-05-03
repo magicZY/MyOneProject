@@ -34,6 +34,7 @@
 		185828E61EADA15D00655A5E /* 16.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 185828E21EADA15D00655A5E /* 16.jpg */; };
 		185828E71EADA15D00655A5E /* 17.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 185828E31EADA15D00655A5E /* 17.jpg */; };
 		185828E81EADA15D00655A5E /* 18.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 185828E41EADA15D00655A5E /* 18.jpg */; };
+		18BDE39D1EB872A700BED8DC /* MGOperationMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BDE39C1EB872A700BED8DC /* MGOperationMenu.m */; };
 		2129F591954E4EAA6D6E8980 /* libPods-CirCleOfFriend.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2335360D6980547DCAD2A2B /* libPods-CirCleOfFriend.a */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +102,8 @@
 		185828E21EADA15D00655A5E /* 16.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 16.jpg; sourceTree = "<group>"; };
 		185828E31EADA15D00655A5E /* 17.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 17.jpg; sourceTree = "<group>"; };
 		185828E41EADA15D00655A5E /* 18.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 18.jpg; sourceTree = "<group>"; };
+		18BDE39B1EB872A700BED8DC /* MGOperationMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGOperationMenu.h; sourceTree = "<group>"; };
+		18BDE39C1EB872A700BED8DC /* MGOperationMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGOperationMenu.m; sourceTree = "<group>"; };
 		6F6ED07EE0618D5EE3A66F0D /* Pods-CirCleOfFriend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CirCleOfFriend.release.xcconfig"; path = "Pods/Target Support Files/Pods-CirCleOfFriend/Pods-CirCleOfFriend.release.xcconfig"; sourceTree = "<group>"; };
 		B419C6D9A4FFBF33AD432749 /* Pods-CirCleOfFriend.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CirCleOfFriend.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CirCleOfFriend/Pods-CirCleOfFriend.debug.xcconfig"; sourceTree = "<group>"; };
 		F2335360D6980547DCAD2A2B /* libPods-CirCleOfFriend.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CirCleOfFriend.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -273,6 +276,7 @@
 		185828C11EA8C3E700655A5E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				18BDE39A1EB8722000BED8DC /* MGOperationMenu */,
 				183B13A91EAE56AD009DCC28 /* MGPhotoContainer */,
 				185828CE1EA9F81700655A5E /* cell */,
 			);
@@ -336,6 +340,15 @@
 				185828E41EADA15D00655A5E /* 18.jpg */,
 			);
 			path = resource;
+			sourceTree = "<group>";
+		};
+		18BDE39A1EB8722000BED8DC /* MGOperationMenu */ = {
+			isa = PBXGroup;
+			children = (
+				18BDE39B1EB872A700BED8DC /* MGOperationMenu.h */,
+				18BDE39C1EB872A700BED8DC /* MGOperationMenu.m */,
+			);
+			path = MGOperationMenu;
 			sourceTree = "<group>";
 		};
 		88187973810034229B4CDD42 /* Pods */ = {
@@ -548,6 +561,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18BDE39D1EB872A700BED8DC /* MGOperationMenu.m in Sources */,
 				183B13B71EAE5870009DCC28 /* SDPhotoBrowser.m in Sources */,
 				185828B81EA88B2D00655A5E /* MGBaseTabBarController.m in Sources */,
 				185828C71EA99CAD00655A5E /* BaseViewController.m in Sources */,

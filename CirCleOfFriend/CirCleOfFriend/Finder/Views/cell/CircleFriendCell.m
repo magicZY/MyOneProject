@@ -9,6 +9,7 @@
 #import "CircleFriendCell.h"
 #import "UIView+SDAutoLayout.h"
 #import "MGPhotoContainerView.h"
+#import "MGOperationMenu.h"
 
 CGFloat maxContentLabelHeight = 0; // 根据具体font而定
 
@@ -21,6 +22,9 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
 @property (nonatomic, strong) UILabel *contentLabel; //内容
 @property (nonatomic, strong) UIButton *moreButton; //收起展开按钮
 @property (nonatomic, strong) MGPhotoContainerView *picContainerView;
+@property (nonatomic, strong) UIButton *operationButton;  //点赞评论按钮
+@property (nonatomic, strong) UILabel *timeLabel; //时间
+@property (nonatomic, strong) MGOperationMenu *operationMenu; //点赞评论按钮展开
 @end
 
 @implementation CircleFriendCell
@@ -33,6 +37,8 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
 //        //设置主题
 //        [self configTheme];
         
+        [self setup];
+        
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
@@ -40,7 +46,19 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
 
 - (void)setup
 {
+    self.avatar.image = [UIImage imageNamed:@""];
     
+    self.nameLabel.text = @"";
+    
+    self.contentLabel.text = @"";
+    
+    self.moreButton.sd_layout.heightIs(0);
+    
+    self.picContainerView.picPathStringsArray = @[];
+    
+    self.timeLabel.text = @"";
+    
+    [self.operationButton setImage:[UIImage imageNamed:@"OperateMore"] forState:UIControlStateNormal];
 }
 
 - (void)awakeFromNib {
@@ -147,18 +165,78 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
     
 }
 
+- (UILabel *)timeLabel
+{
+    if (!_timeLabel) {
+        
+        _timeLabel = [UILabel new];
+        
+        _timeLabel.font = [UIFont systemFontOfSize:13];
+        
+        [self.contentView addSubview:_timeLabel];
+        
+        _timeLabel.sd_layout
+        .leftEqualToView(_contentLabel)
+        .topSpaceToView(_picContainerView, 10)
+        .heightIs(15);
+        [_timeLabel setSingleLineAutoResizeWithMaxWidth:200];
+        
+        
+    }
+    
+    return _timeLabel;
+}
+
+- (UIButton *)operationButton
+{
+    if (!_operationButton) {
+        
+        _operationButton = [UIButton new];
+        
+        [self.contentView addSubview:_operationButton];
+        
+        [_operationButton addTarget:self action:@selector(operationClicked:) forControlEvents:UIControlEventTouchUpInside];
+        
+        _operationButton.sd_layout
+        .rightSpaceToView(self.contentView, 10)
+        .centerYEqualToView(_timeLabel)
+        .heightIs(25)
+        .widthIs(25);
+    }
+    
+    return _operationButton;
+}
+
+- (MGOperationMenu *)operationMenu
+{
+    if (!_operationMenu) {
+        
+        _operationMenu = [MGOperationMenu new];
+        
+        [self.contentView addSubview:_operationMenu];
+        
+        _operationMenu.sd_layout
+        .rightSpaceToView(_operationButton, 0)
+        .heightIs(36)
+        .centerYEqualToView(_operationButton)
+        .widthIs(0);
+    }
+    
+    return _operationMenu;
+}
+
 #pragma mark - setter
 
 - (void)setDataModel:(CircleFriendModel *)dataModel
 {
     _dataModel = dataModel;
-    self.avatar.image = [UIImage imageNamed:dataModel.avatar];
-    self.nameLabel.text = dataModel.username;
-    self.contentLabel.text = dataModel.content;
-    self.picContainerView.picPathStringsArray = dataModel.picNameAr;
+    _avatar.image = [UIImage imageNamed:dataModel.avatar];
+    _nameLabel.text = dataModel.username;
+    _contentLabel.text = dataModel.content;
+    _picContainerView.picPathStringsArray = dataModel.picNameAr;
     
     if (dataModel.shouldShowMoreButton) { // 如果文字高度超过60
-        self.moreButton.sd_layout.heightIs(20);
+        _moreButton.sd_layout.heightIs(20);
         _moreButton.hidden = NO;
         
         if (dataModel.isOpening) { // 如果需要展开
@@ -169,7 +247,7 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
             [_moreButton setTitle:@"全文" forState:UIControlStateNormal];
         }
     } else {
-        self.moreButton.sd_layout.heightIs(0);
+        _moreButton.sd_layout.heightIs(0);
         _moreButton.hidden = YES;
     }
     
@@ -177,9 +255,22 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
     if (dataModel.picNameAr.count) {
         picContainerTopMargin = 10;
     }
+    
     _picContainerView.sd_layout.topSpaceToView(_moreButton, picContainerTopMargin);
     
-    [self setupAutoHeightWithBottomView:_picContainerView bottomMargin:15];
+    UIView *bottomView;
+    
+    bottomView = _timeLabel;
+    
+//    if (dataModel.likeAr.count || dataModel.commentsAr.count) {
+//        
+//    }else {
+//    
+//    }
+    
+    [self setupAutoHeightWithBottomView:_timeLabel bottomMargin:15];
+    
+    _timeLabel.text = @"1分钟前";
 }
 
 #pragma mark - private actions
@@ -189,5 +280,10 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
     if (self.moreButtonClickedBlock) {
         self.moreButtonClickedBlock(self.indexPath);
     }
+}
+
+- (void)operationClicked:(UIButton *)sender
+{
+    self.operationMenu.show = !self.operationMenu.isShowing;
 }
 @end
