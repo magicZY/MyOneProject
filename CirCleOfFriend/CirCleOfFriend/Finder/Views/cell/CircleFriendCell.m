@@ -82,6 +82,8 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
     {
         _avatar = [UIImageView new];
         [self.contentView addSubview:_avatar];
+        _avatar.layer.masksToBounds = YES;
+        _avatar.layer.cornerRadius = 20.0f;
         _avatar.sd_layout.leftSpaceToView(self.contentView, 15)
         .topSpaceToView(self.contentView, 15)
         .widthIs(40)
