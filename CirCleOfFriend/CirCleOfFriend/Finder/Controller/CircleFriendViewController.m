@@ -12,9 +12,14 @@
 #import "CircleFriendModel.h"
 
 
-@interface CircleFriendViewController ()<UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic, strong)UITableView *circleFriendTableView;
-@property (nonatomic, strong)NSMutableArray *dataSource;
+@interface CircleFriendViewController ()<UITableViewDelegate,UITableViewDataSource,CircleFriendCellDelegate,UITextFieldDelegate,UIScrollViewDelegate>
+{
+    CGFloat keybordHeight;
+    NSIndexPath *_currentEditingIndexthPath;
+}
+@property (nonatomic, strong) UITableView *circleFriendTableView;
+@property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) UITextField *commentTextField;
 @end
 
 @implementation CircleFriendViewController
@@ -31,6 +36,8 @@
     [self.dataSource addObjectsFromArray:[self createModelWithCount:10]];
     
     self.circleFriendTableView.backgroundColor = [UIColor whiteColor];
+    
+    [self addNSNotificationCenter];
 }
 
 
@@ -46,6 +53,8 @@
     static NSString *identifier = @"circleCell";
     
     CircleFriendCell *cell = [[CircleFriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    
+    cell.delegate = self;
     
     return cell;
 }
@@ -80,9 +89,36 @@
     
 }
 
+#pragma mark - CircleFriendCellDelegate
+- (void)didClickLikeInCell:(UITableViewCell *)cell
+{
+    NSLog(@"-----like");
+}
+- (void)didClickcCommentInCell:(UITableViewCell *)cell
+{
+    NSLog(@"-----comment");
+    [self.commentTextField becomeFirstResponder];
+    
+    _currentEditingIndexthPath = [self.circleFriendTableView indexPathForCell:cell];
+    
+    [self adjustTableViewToFitKeyboard];
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    NSLog(@"beaginScorller");
+    [self.commentTextField resignFirstResponder];
+}
+
 #pragma mark - Public
 
 #pragma mark - Private
+
+- (void)addNSNotificationCenter
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardNotification:) name:UIKeyboardWillChangeFrameNotification object:nil];
+}
 
 - (NSArray *)createModelWithCount:(NSInteger)count
 {
@@ -205,6 +241,50 @@
     return width;
 }
 
+- (void)keyboardNotification:(NSNotification *)notification
+{
+    NSDictionary *dict = notification.userInfo;
+    CGRect rect = [dict[@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
+    
+    CGRect textFieldRect = CGRectMake(0, rect.origin.y - 40, rect.size.width, 40);
+    if (rect.origin.y == [UIScreen mainScreen].bounds.size.height) {
+        textFieldRect = rect;
+    }
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        _commentTextField.frame = textFieldRect;
+    }];
+    
+    CGFloat h = rect.size.height + 40;
+    if (keybordHeight != h) {
+        keybordHeight = h;
+        [self adjustTableViewToFitKeyboard];
+    }
+}
+
+- (void)adjustTableViewToFitKeyboard
+{
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    UITableViewCell *cell = [_circleFriendTableView cellForRowAtIndexPath:_currentEditingIndexthPath];
+    CGRect rect = [cell.superview convertRect:cell.frame toView:window];
+    [self adjustTableViewToFitKeyboardWithRect:rect];
+}
+
+- (void)adjustTableViewToFitKeyboardWithRect:(CGRect)rect
+{
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    CGFloat delta = CGRectGetMaxY(rect) - (window.bounds.size.height - keybordHeight);
+    
+    CGPoint offset = _circleFriendTableView.contentOffset;
+    offset.y += delta;
+    if (offset.y < 0) {
+        offset.y = 0;
+    }
+    
+    [_circleFriendTableView setContentOffset:offset animated:YES];
+}
+
+
 #pragma mark - Getter
 - (UITableView *)circleFriendTableView
 {
@@ -240,6 +320,52 @@
     }
     
     return _dataSource;
+}
+
+- (UITextField *)commentTextField
+{
+    if (!_commentTextField) {
+        
+        _commentTextField = [UITextField new];
+        _commentTextField.returnKeyType = UIReturnKeyDone;
+        _commentTextField.delegate = self;
+        _commentTextField.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.8].CGColor;
+        _commentTextField.layer.borderWidth = 1;
+        _commentTextField.backgroundColor = [UIColor grayColor];
+        
+        //为textfield添加背景颜色 字体颜色的设置 还有block设置 , 在block中改变它的键盘样式 (当然背景颜色和字体颜色也可以直接在block中写)
+        
+//        _commentTextField.lee_theme
+//        .LeeAddBackgroundColor(DAY , [UIColor whiteColor])
+//        .LeeAddBackgroundColor(NIGHT , [UIColor blackColor])
+//        .LeeAddTextColor(DAY , [UIColor blackColor])
+//        .LeeAddTextColor(NIGHT , [UIColor grayColor])
+//        .LeeAddCustomConfig(DAY , ^(UITextField *item){
+//            
+//            item.keyboardAppearance = UIKeyboardAppearanceDefault;
+//            if ([item isFirstResponder]) {
+//                [item resignFirstResponder];
+//                [item becomeFirstResponder];
+//            }
+//        }).LeeAddCustomConfig(NIGHT , ^(UITextField *item){
+//            
+//            item.keyboardAppearance = UIKeyboardAppearanceDark;
+//            if ([item isFirstResponder]) {
+//                [item resignFirstResponder];
+//                [item becomeFirstResponder];
+//            }
+//        });
+        
+        _commentTextField.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, self.view.width_sd, 40);
+
+        [[UIApplication sharedApplication].keyWindow addSubview:_commentTextField];
+        
+        [_commentTextField becomeFirstResponder];
+        [_commentTextField resignFirstResponder];
+        
+    }
+    
+    return _commentTextField;
 }
 
 #pragma mark - Setter

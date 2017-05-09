@@ -10,4 +10,7 @@
 
 @interface MGOperationMenu : UIView
 @property (nonatomic, assign, getter = isShowing) BOOL show;
+
+@property (nonatomic, copy) void (^likeClickedOperation)(); //点赞
+@property (nonatomic, copy) void (^commentClickedOperation)(); //评论
 @end

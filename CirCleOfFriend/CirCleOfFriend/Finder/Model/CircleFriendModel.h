@@ -34,6 +34,8 @@
 @property (nonatomic, copy) NSString *commentsUserId; //评论者id
 @property (nonatomic, copy) NSString *toUsername;//被评论者昵称
 @property (nonatomic, copy) NSString *toUserid; //被评论者ID
+
+@property (nonatomic, copy) NSAttributedString *attributedContent;
 @end
 
 

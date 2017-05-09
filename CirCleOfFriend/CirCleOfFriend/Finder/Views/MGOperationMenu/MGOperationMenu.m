@@ -57,10 +57,19 @@
 
 - (void)likeButtonClicked
 {
+    if (self.likeClickedOperation) {
+        self.likeClickedOperation();
+    }
+    self.show = NO;
 }
 
 - (void)commentButtonClicked
-{}
+{
+    if (self.commentClickedOperation) {
+        self.commentClickedOperation();
+    }
+    self.show = NO;
+}
 
 #pragma mark - getter
 - (UIButton *)likeButton
@@ -103,7 +112,7 @@
 {
     if (!_commentButton) {
         
-        _commentButton = [self createButtonWithTittle:@"评论" image:[UIImage imageNamed:@"Comment"] setImage:[UIImage imageNamed:@""] target:self selector:@selector(likeButtonClicked)];
+        _commentButton = [self createButtonWithTittle:@"评论" image:[UIImage imageNamed:@"Comment"] setImage:[UIImage imageNamed:@""] target:self selector:@selector(commentButtonClicked)];
         
         [self addSubview:_commentButton];
 

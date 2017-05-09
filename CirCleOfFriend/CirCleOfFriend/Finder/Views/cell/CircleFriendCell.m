@@ -10,6 +10,7 @@
 #import "UIView+SDAutoLayout.h"
 #import "MGPhotoContainerView.h"
 #import "MGOperationMenu.h"
+#import "MGCommentView.h"
 
 CGFloat maxContentLabelHeight = 0; // 根据具体font而定
 
@@ -25,6 +26,7 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
 @property (nonatomic, strong) UIButton *operationButton;  //点赞评论按钮
 @property (nonatomic, strong) UILabel *timeLabel; //时间
 @property (nonatomic, strong) MGOperationMenu *operationMenu; //点赞评论按钮展开
+@property (nonatomic, strong) MGCommentView *commentView; //点赞评论视图
 @end
 
 @implementation CircleFriendCell
@@ -215,6 +217,19 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
         
         [self.contentView addSubview:_operationMenu];
         
+        //点赞和评论
+        __weak typeof(self) weakSelf = self;
+        [_operationMenu setLikeClickedOperation:^{
+            if ([weakSelf.delegate respondsToSelector:@selector(didClickLikeInCell:)]) {
+                [weakSelf.delegate didClickLikeInCell:weakSelf];
+            }
+        }];
+        [_operationMenu setCommentClickedOperation:^{
+            if ([weakSelf.delegate respondsToSelector:@selector(didClickcCommentInCell:)]) {
+                [weakSelf.delegate didClickcCommentInCell:weakSelf];
+            }
+        }];
+        
         _operationMenu.sd_layout
         .rightSpaceToView(_operationButton, 0)
         .heightIs(36)
@@ -225,11 +240,30 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
     return _operationMenu;
 }
 
+- (MGCommentView *)commentView
+{
+    if (!_commentView) {
+        
+        _commentView = [MGCommentView new];
+        
+        [self.contentView addSubview:_commentView];
+        
+        _commentView.sd_layout
+        .leftEqualToView(_contentLabel)
+        .rightSpaceToView(self.contentView, 10)
+        .topSpaceToView(_timeLabel, 10); // 已经在内部实现高度自适应所以不需要再设置高度
+    }
+    
+    return _commentView;
+}
+
 #pragma mark - setter
 
 - (void)setDataModel:(CircleFriendModel *)dataModel
 {
     _dataModel = dataModel;
+    [self.commentView setUpWithLikeItemsArray:dataModel.likeAr andCommentItemsArray:dataModel.commentsAr];
+
     _avatar.image = [UIImage imageNamed:dataModel.avatar];
     _nameLabel.text = dataModel.username;
     _contentLabel.text = dataModel.content;
@@ -251,6 +285,7 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
         _moreButton.hidden = YES;
     }
     
+    
     CGFloat picContainerTopMargin = 0;
     if (dataModel.picNameAr.count) {
         picContainerTopMargin = 10;
@@ -258,17 +293,12 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
     
     _picContainerView.sd_layout.topSpaceToView(_moreButton, picContainerTopMargin);
     
-    UIView *bottomView;
+    UIView *bottomView = nil;
     
-    bottomView = _timeLabel;
+    if (!dataModel.likeAr.count && !dataModel.commentsAr.count) bottomView = _timeLabel;
+        else bottomView = _commentView;
     
-//    if (dataModel.likeAr.count || dataModel.commentsAr.count) {
-//        
-//    }else {
-//    
-//    }
-    
-    [self setupAutoHeightWithBottomView:_timeLabel bottomMargin:15];
+    [self setupAutoHeightWithBottomView:bottomView bottomMargin:15];
     
     _timeLabel.text = @"1分钟前";
 }
