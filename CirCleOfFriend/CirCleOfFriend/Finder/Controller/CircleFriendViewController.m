@@ -93,6 +93,35 @@
 - (void)didClickLikeInCell:(UITableViewCell *)cell
 {
     NSLog(@"-----like");
+    
+    NSIndexPath *indexPath = [self.circleFriendTableView indexPathForCell:cell];
+    CircleFriendModel *model = self.dataSource[indexPath.row];
+    NSMutableArray *temp = [NSMutableArray arrayWithArray:model.likeAr];
+    
+    if (!model.isLiked) {
+        
+        CircleFriendLikeModel *likeModel = [CircleFriendLikeModel new];
+        likeModel.likeUserName = @"金三胖";
+        likeModel.userId = @"MGiOS";
+        [temp addObject:likeModel];
+        model.liked = YES;
+    }else {
+        CircleFriendLikeModel *tempLikeModel = nil;
+        for (CircleFriendLikeModel *likeModel in model.likeAr) {
+            if ([likeModel.userId isEqualToString:@"MGiOS"]) {
+                tempLikeModel = likeModel;
+                break;
+            }
+        }
+        [temp removeObject:tempLikeModel];
+        model.liked = NO;
+    }
+    
+    model.likeAr = [temp copy];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.circleFriendTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    });
 }
 - (void)didClickcCommentInCell:(UITableViewCell *)cell
 {
