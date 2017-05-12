@@ -33,7 +33,9 @@
 		185828E61EADA15D00655A5E /* 16.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 185828E21EADA15D00655A5E /* 16.jpg */; };
 		185828E71EADA15D00655A5E /* 17.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 185828E31EADA15D00655A5E /* 17.jpg */; };
 		185828E81EADA15D00655A5E /* 18.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 185828E41EADA15D00655A5E /* 18.jpg */; };
-		18626CC31EC31D3E00830CF7 /* MGMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18626CC21EC31D3E00830CF7 /* MGMineViewController.m */; };
+		185B23A21EC59F6F00A5AEF2 /* MGMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185B23A01EC59F6F00A5AEF2 /* MGMineViewController.m */; };
+		185B23A51EC59F8C00A5AEF2 /* MGMineParentClassScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185B23A41EC59F8C00A5AEF2 /* MGMineParentClassScrollViewController.m */; };
+		185B23A91EC5A5F900A5AEF2 /* MGMineSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185B23A81EC5A5F900A5AEF2 /* MGMineSubViewController.m */; };
 		18626CCA1EC31EF300830CF7 /* MGMainTouchTableTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18626CC91EC31EF300830CF7 /* MGMainTouchTableTableView.m */; };
 		18626CCE1EC3253C00830CF7 /* MGMineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18626CCD1EC3253C00830CF7 /* MGMineHeaderView.m */; };
 		18626CD21EC43BD200830CF7 /* MGMineSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18626CD11EC43BD200830CF7 /* MGMineSegmentView.m */; };
@@ -123,8 +125,12 @@
 		185828E21EADA15D00655A5E /* 16.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 16.jpg; sourceTree = "<group>"; };
 		185828E31EADA15D00655A5E /* 17.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 17.jpg; sourceTree = "<group>"; };
 		185828E41EADA15D00655A5E /* 18.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 18.jpg; sourceTree = "<group>"; };
-		18626CC11EC31D3E00830CF7 /* MGMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMineViewController.h; sourceTree = "<group>"; };
-		18626CC21EC31D3E00830CF7 /* MGMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMineViewController.m; sourceTree = "<group>"; };
+		185B239F1EC59F6F00A5AEF2 /* MGMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMineViewController.h; sourceTree = "<group>"; };
+		185B23A01EC59F6F00A5AEF2 /* MGMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMineViewController.m; sourceTree = "<group>"; };
+		185B23A31EC59F8C00A5AEF2 /* MGMineParentClassScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMineParentClassScrollViewController.h; sourceTree = "<group>"; };
+		185B23A41EC59F8C00A5AEF2 /* MGMineParentClassScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMineParentClassScrollViewController.m; sourceTree = "<group>"; };
+		185B23A71EC5A5F900A5AEF2 /* MGMineSubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMineSubViewController.h; sourceTree = "<group>"; };
+		185B23A81EC5A5F900A5AEF2 /* MGMineSubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMineSubViewController.m; sourceTree = "<group>"; };
 		18626CC81EC31EF300830CF7 /* MGMainTouchTableTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMainTouchTableTableView.h; sourceTree = "<group>"; };
 		18626CC91EC31EF300830CF7 /* MGMainTouchTableTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMainTouchTableTableView.m; sourceTree = "<group>"; };
 		18626CCC1EC3253C00830CF7 /* MGMineHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMineHeaderView.h; sourceTree = "<group>"; };
@@ -409,11 +415,39 @@
 			path = resource;
 			sourceTree = "<group>";
 		};
+		185B239E1EC59F6F00A5AEF2 /* MGMineViewController */ = {
+			isa = PBXGroup;
+			children = (
+				185B239F1EC59F6F00A5AEF2 /* MGMineViewController.h */,
+				185B23A01EC59F6F00A5AEF2 /* MGMineViewController.m */,
+			);
+			path = MGMineViewController;
+			sourceTree = "<group>";
+		};
+		185B23A11EC59F6F00A5AEF2 /* MGMineParentClassScrollViewController */ = {
+			isa = PBXGroup;
+			children = (
+				185B23A31EC59F8C00A5AEF2 /* MGMineParentClassScrollViewController.h */,
+				185B23A41EC59F8C00A5AEF2 /* MGMineParentClassScrollViewController.m */,
+			);
+			path = MGMineParentClassScrollViewController;
+			sourceTree = "<group>";
+		};
+		185B23A61EC5A5EA00A5AEF2 /* MGMineSubViewController */ = {
+			isa = PBXGroup;
+			children = (
+				185B23A71EC5A5F900A5AEF2 /* MGMineSubViewController.h */,
+				185B23A81EC5A5F900A5AEF2 /* MGMineSubViewController.m */,
+			);
+			path = MGMineSubViewController;
+			sourceTree = "<group>";
+		};
 		18626CBE1EC31D1900830CF7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				18626CC11EC31D3E00830CF7 /* MGMineViewController.h */,
-				18626CC21EC31D3E00830CF7 /* MGMineViewController.m */,
+				185B23A61EC5A5EA00A5AEF2 /* MGMineSubViewController */,
+				185B239E1EC59F6F00A5AEF2 /* MGMineViewController */,
+				185B23A11EC59F6F00A5AEF2 /* MGMineParentClassScrollViewController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -779,13 +813,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185B23A91EC5A5F900A5AEF2 /* MGMineSubViewController.m in Sources */,
 				1875F05E1EC15F4B00F42922 /* MGCommentView.m in Sources */,
 				1875F0931EC1983F00F42922 /* MLLinkLabel.m in Sources */,
 				18BDE39D1EB872A700BED8DC /* MGOperationMenu.m in Sources */,
 				1875F0961EC1983F00F42922 /* TTTAttributedLabel.m in Sources */,
 				183B13B71EAE5870009DCC28 /* SDPhotoBrowser.m in Sources */,
 				1875F0911EC1983F00F42922 /* MLLabelLayoutManager.m in Sources */,
-				18626CC31EC31D3E00830CF7 /* MGMineViewController.m in Sources */,
 				185828B81EA88B2D00655A5E /* MGBaseTabBarController.m in Sources */,
 				185828C71EA99CAD00655A5E /* BaseViewController.m in Sources */,
 				1875F08C1EC1983F00F42922 /* NSString+MLLabel.m in Sources */,
@@ -793,6 +827,7 @@
 				185828D41EA9FE7A00655A5E /* CircleFriendModel.m in Sources */,
 				1875F0891EC1983F00F42922 /* MLEmojiLabel.m in Sources */,
 				185828CA1EA9B6FE00655A5E /* CircleFriendViewController.m in Sources */,
+				185B23A21EC59F6F00A5AEF2 /* MGMineViewController.m in Sources */,
 				1875F0921EC1983F00F42922 /* MLLabel.m in Sources */,
 				185828BB1EA88B5400655A5E /* MGTabBar.m in Sources */,
 				185828831EA87E4600655A5E /* AppDelegate.m in Sources */,
@@ -806,6 +841,7 @@
 				1875F08E1EC1983F00F42922 /* MLTextAttachment.m in Sources */,
 				18626CD21EC43BD200830CF7 /* MGMineSegmentView.m in Sources */,
 				1875F08A1EC1983F00F42922 /* NSAttributedString+MLLabel.m in Sources */,
+				185B23A51EC59F8C00A5AEF2 /* MGMineParentClassScrollViewController.m in Sources */,
 				18626CCE1EC3253C00830CF7 /* MGMineHeaderView.m in Sources */,
 				185828801EA87E4600655A5E /* main.m in Sources */,
 				183B13B81EAE5870009DCC28 /* SDWaitingView.m in Sources */,

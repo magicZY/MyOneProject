@@ -11,12 +11,14 @@
 #import "UIView+SDAutoLayout.h"
 #import "MGMineHeaderView.h"
 #import "MGMineSegmentView.h"
+#import "MGMineSubViewController.h"
 
 @interface MGMineViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     BOOL _isTopIsCanNotMoveTabViewPre;
     BOOL _isTopIsCanNotMoveTabView;
     BOOL _canScroll;
+    CGFloat currentAlpha;
 }
 @property (nonatomic, strong) MGMainTouchTableTableView *mainTableView;
 @property (nonatomic, strong) MGMineHeaderView *headerView;
@@ -28,8 +30,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBar.alpha = 0;
+    currentAlpha = 0.0f;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(acceptMsg:) name:@"leaveTop" object:nil];
     [self setupView];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.navigationController.navigationBar.alpha = currentAlpha;
 }
 #pragma mark - UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -86,8 +95,8 @@
         
         [_headerView setImageFrame:scrollView];
     }
-    CGFloat navAlpha = (scrollView.contentOffset.y / 205) * 2;
-    self.navigationController.navigationBar.alpha = navAlpha;
+    currentAlpha = (scrollView.contentOffset.y / 205) * 2;
+    self.navigationController.navigationBar.alpha = currentAlpha;
     
 }
 #pragma mark - Public
@@ -101,10 +110,10 @@
 - (UIView *)setSubViewControllers
 {
     if (!_segmentView) {
-        UIViewController *vc1 = [UIViewController new];
+        MGMineSubViewController *vc1 = [MGMineSubViewController new];
         vc1.view.backgroundColor = [UIColor redColor];
         
-        UIViewController *vc2 = [UIViewController new];
+        MGMineSubViewController *vc2 = [MGMineSubViewController new];
         vc2.view.backgroundColor = [UIColor blueColor];
         
         NSArray *controllers = @[vc1,vc2];
@@ -118,6 +127,16 @@
     return _segmentView;
 
 }
+
+-(void)acceptMsg:(NSNotification *)notification{
+    
+    NSDictionary *userInfo = notification.userInfo;
+    NSString *canScroll = userInfo[@"canScroll"];
+    if ([canScroll isEqualToString:@"1"]) {
+        _canScroll = YES;
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
