@@ -9,6 +9,7 @@
 #import "MGBaseTabBarController.h"
 #import "MGTabBar.h"
 #import "CircleFriendViewController.h"
+#import "MGMineViewController.h"
 
 @interface MGBaseTabBarController ()<MGTabBarDelegate>
 
@@ -64,8 +65,7 @@
     quiz.view.backgroundColor = [UIColor purpleColor];
     [self setOneChildViewController:quiz withImage:[UIImage imageNamed:@"tabbar3"] selectedImage:[UIImage imageNamed:@"tabbar3_selected"] title:@"发现"];
     
-    UIViewController *more = [[UIViewController alloc] init];
-    more.view.backgroundColor = [UIColor grayColor];
+    MGMineViewController *more = [[MGMineViewController alloc] init];
     [self setOneChildViewController:more withImage:[UIImage imageNamed:@"tabbar4"] selectedImage:[UIImage imageNamed:@"tabbar4_selected"] title:@"我的"];
 
 }

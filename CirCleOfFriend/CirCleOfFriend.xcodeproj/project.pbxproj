@@ -33,6 +33,10 @@
 		185828E61EADA15D00655A5E /* 16.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 185828E21EADA15D00655A5E /* 16.jpg */; };
 		185828E71EADA15D00655A5E /* 17.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 185828E31EADA15D00655A5E /* 17.jpg */; };
 		185828E81EADA15D00655A5E /* 18.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 185828E41EADA15D00655A5E /* 18.jpg */; };
+		18626CC31EC31D3E00830CF7 /* MGMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18626CC21EC31D3E00830CF7 /* MGMineViewController.m */; };
+		18626CCA1EC31EF300830CF7 /* MGMainTouchTableTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18626CC91EC31EF300830CF7 /* MGMainTouchTableTableView.m */; };
+		18626CCE1EC3253C00830CF7 /* MGMineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18626CCD1EC3253C00830CF7 /* MGMineHeaderView.m */; };
+		18626CD21EC43BD200830CF7 /* MGMineSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18626CD11EC43BD200830CF7 /* MGMineSegmentView.m */; };
 		1875F05E1EC15F4B00F42922 /* MGCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1875F05D1EC15F4B00F42922 /* MGCommentView.m */; };
 		1875F0601EC1624F00F42922 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1875F05F1EC1624F00F42922 /* Assets.xcassets */; };
 		1875F0861EC1983F00F42922 /* MLEmoji_Expression.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1875F0621EC1983F00F42922 /* MLEmoji_Expression.bundle */; };
@@ -119,6 +123,14 @@
 		185828E21EADA15D00655A5E /* 16.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 16.jpg; sourceTree = "<group>"; };
 		185828E31EADA15D00655A5E /* 17.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 17.jpg; sourceTree = "<group>"; };
 		185828E41EADA15D00655A5E /* 18.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 18.jpg; sourceTree = "<group>"; };
+		18626CC11EC31D3E00830CF7 /* MGMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMineViewController.h; sourceTree = "<group>"; };
+		18626CC21EC31D3E00830CF7 /* MGMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMineViewController.m; sourceTree = "<group>"; };
+		18626CC81EC31EF300830CF7 /* MGMainTouchTableTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMainTouchTableTableView.h; sourceTree = "<group>"; };
+		18626CC91EC31EF300830CF7 /* MGMainTouchTableTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMainTouchTableTableView.m; sourceTree = "<group>"; };
+		18626CCC1EC3253C00830CF7 /* MGMineHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMineHeaderView.h; sourceTree = "<group>"; };
+		18626CCD1EC3253C00830CF7 /* MGMineHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMineHeaderView.m; sourceTree = "<group>"; };
+		18626CD01EC43BD200830CF7 /* MGMineSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMineSegmentView.h; sourceTree = "<group>"; };
+		18626CD11EC43BD200830CF7 /* MGMineSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMineSegmentView.m; sourceTree = "<group>"; };
 		1875F05C1EC15F4B00F42922 /* MGCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCommentView.h; sourceTree = "<group>"; };
 		1875F05D1EC15F4B00F42922 /* MGCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCommentView.m; sourceTree = "<group>"; };
 		1875F05F1EC1624F00F42922 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -310,6 +322,9 @@
 		185828BF1EA8C2D600655A5E /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				18626CBE1EC31D1900830CF7 /* Controller */,
+				18626CBF1EC31D1900830CF7 /* Model */,
+				18626CC01EC31D1900830CF7 /* Views */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -392,6 +407,59 @@
 				185828E41EADA15D00655A5E /* 18.jpg */,
 			);
 			path = resource;
+			sourceTree = "<group>";
+		};
+		18626CBE1EC31D1900830CF7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				18626CC11EC31D3E00830CF7 /* MGMineViewController.h */,
+				18626CC21EC31D3E00830CF7 /* MGMineViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		18626CBF1EC31D1900830CF7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		18626CC01EC31D1900830CF7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				18626CCF1EC438B300830CF7 /* MGMineSegmentView */,
+				18626CCB1EC3252100830CF7 /* MGMineHeaderView */,
+				18626CC71EC31EDA00830CF7 /* MGMainTouchTableTableView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		18626CC71EC31EDA00830CF7 /* MGMainTouchTableTableView */ = {
+			isa = PBXGroup;
+			children = (
+				18626CC81EC31EF300830CF7 /* MGMainTouchTableTableView.h */,
+				18626CC91EC31EF300830CF7 /* MGMainTouchTableTableView.m */,
+			);
+			path = MGMainTouchTableTableView;
+			sourceTree = "<group>";
+		};
+		18626CCB1EC3252100830CF7 /* MGMineHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				18626CCC1EC3253C00830CF7 /* MGMineHeaderView.h */,
+				18626CCD1EC3253C00830CF7 /* MGMineHeaderView.m */,
+			);
+			path = MGMineHeaderView;
+			sourceTree = "<group>";
+		};
+		18626CCF1EC438B300830CF7 /* MGMineSegmentView */ = {
+			isa = PBXGroup;
+			children = (
+				18626CD01EC43BD200830CF7 /* MGMineSegmentView.h */,
+				18626CD11EC43BD200830CF7 /* MGMineSegmentView.m */,
+			);
+			path = MGMineSegmentView;
 			sourceTree = "<group>";
 		};
 		1875F05B1EC15F1400F42922 /* CommentView */ = {
@@ -717,6 +785,7 @@
 				1875F0961EC1983F00F42922 /* TTTAttributedLabel.m in Sources */,
 				183B13B71EAE5870009DCC28 /* SDPhotoBrowser.m in Sources */,
 				1875F0911EC1983F00F42922 /* MLLabelLayoutManager.m in Sources */,
+				18626CC31EC31D3E00830CF7 /* MGMineViewController.m in Sources */,
 				185828B81EA88B2D00655A5E /* MGBaseTabBarController.m in Sources */,
 				185828C71EA99CAD00655A5E /* BaseViewController.m in Sources */,
 				1875F08C1EC1983F00F42922 /* NSString+MLLabel.m in Sources */,
@@ -733,8 +802,11 @@
 				1875F08D1EC1983F00F42922 /* MLExpressionManager.m in Sources */,
 				183B13B61EAE5870009DCC28 /* SDBrowserImageView.m in Sources */,
 				185828BE1EA88DEF00655A5E /* MGTabBarButton.m in Sources */,
+				18626CCA1EC31EF300830CF7 /* MGMainTouchTableTableView.m in Sources */,
 				1875F08E1EC1983F00F42922 /* MLTextAttachment.m in Sources */,
+				18626CD21EC43BD200830CF7 /* MGMineSegmentView.m in Sources */,
 				1875F08A1EC1983F00F42922 /* NSAttributedString+MLLabel.m in Sources */,
+				18626CCE1EC3253C00830CF7 /* MGMineHeaderView.m in Sources */,
 				185828801EA87E4600655A5E /* main.m in Sources */,
 				183B13B81EAE5870009DCC28 /* SDWaitingView.m in Sources */,
 				185828D11EA9F81700655A5E /* CircleFriendCell.m in Sources */,
