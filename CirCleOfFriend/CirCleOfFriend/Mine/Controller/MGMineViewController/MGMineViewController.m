@@ -30,6 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setNavigationBar:@"个人中心"];
     currentAlpha = 0.0f;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(acceptMsg:) name:@"leaveTop" object:nil];
     [self setupView];
@@ -71,7 +72,7 @@
     //获取视图滚动的偏移量
     CGFloat tabOffsetY = [self.mainTableView rectForSection:0].origin.y - 64;
     CGFloat offsetY = scrollView.contentOffset.y;
-    
+    NSLog(@"%f",scrollView.contentOffset.x);
     _isTopIsCanNotMoveTabViewPre = _isTopIsCanNotMoveTabView;
     if (offsetY >= tabOffsetY) {
         scrollView.contentOffset = CGPointMake(0, tabOffsetY);

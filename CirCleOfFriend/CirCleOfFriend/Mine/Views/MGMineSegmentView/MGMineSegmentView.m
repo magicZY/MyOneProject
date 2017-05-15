@@ -22,17 +22,43 @@
 @implementation MGMineSegmentView
 
 #pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+
+    int currentIndex = roundf(scrollView.contentOffset.x/self.width);
+    
+    UIButton * btn = (UIButton*)[self.segmentView viewWithTag:currentIndex];
+    self.selectButton.selected = NO;
+    self.selectButton = btn;
+    self.selectButton.selected = YES;
+    
+    UIViewController *containerView = _controllers[currentIndex];
+    CGFloat offsetX = CGRectGetMidX(containerView.view.frame)-414/2;
+    [self.segmentScrollView setContentOffset:CGPointMake(offsetX, 0) animated:YES];
+    
+    
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+
 //    [UIView animateWithDuration:0.2 animations:^{
 //        CGPoint frame = self.line.center;
 //        frame.x = self.frame.size.width/(self.controllers.count*2) +(self.frame.size.width/self.controllers.count)*(self.segmentScrollView.contentOffset.x/self.frame.size.width);
 //        self.line.center = frame;
 //    }];
-    UIButton * btn = (UIButton*)[self.segmentView viewWithTag:(self.segmentScrollView.contentOffset.x/self.frame.size.width)];
+    
+    int currentIndex = roundf(scrollView.contentOffset.x/self.width);
+    
+    UIButton * btn = (UIButton*)[self.segmentView viewWithTag:currentIndex];
     self.selectButton.selected = NO;
     self.selectButton = btn;
     self.selectButton.selected = YES;
+    
+    UIViewController *containerView = _controllers[currentIndex];
+    CGFloat offsetX = CGRectGetMidX(containerView.view.frame)-414/2;
+    [self.segmentScrollView setContentOffset:CGPointMake(offsetX, 0) animated:YES];
 }
 
 
@@ -95,7 +121,7 @@
         frame.x = self.frame.size.width/(self.controllers.count*2) +(self.frame.size.width/self.controllers.count)* (sender.tag);
         self.line.center = frame;
     }];
-    [self.segmentScrollView setContentOffset:CGPointMake((sender.tag)*self.frame.size.width, 0) animated:YES ];
+    [self.segmentScrollView setContentOffset:CGPointMake((sender.tag)*self.frame.size.width, 0) animated:YES];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SelectVC" object:sender userInfo:nil];
 }
@@ -129,6 +155,7 @@
         _segmentScrollView.delegate = self;
         _segmentScrollView.showsHorizontalScrollIndicator = NO;
         _segmentScrollView.bounces = NO;
+        _segmentScrollView.decelerationRate = UIScrollViewDecelerationRateFast;
         
         _segmentScrollView.sd_layout
         .leftEqualToView(self)

@@ -37,11 +37,12 @@
     
     [self setNavigationBar:@"朋友圈"];
     
+    [self addNSNotificationCenter];
+    
     [self.dataSource addObjectsFromArray:[self createModelWithCount:10]];
     
     self.circleFriendTableView.backgroundColor = [UIColor whiteColor];
     
-    [self addNSNotificationCenter];
 }
 
 

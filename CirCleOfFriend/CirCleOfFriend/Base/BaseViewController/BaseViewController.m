@@ -38,7 +38,7 @@
 
 - (void)setNavigationBar:(NSString *)titleStr
 {
-    self.title = titleStr;
+    self.navigationItem.title = titleStr;
 }
 
 /**
@@ -142,23 +142,23 @@
 
 - (void)settingsViewControllerAttribute
 {
-    
     // 设置每个子类的背景颜色
     self.view.backgroundColor = [UIColor whiteColor];
     // 设置子类的NavBar上的渲染颜色
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.tintColor = [UIColor clearColor];
     // 改变NavBar底层View的颜色
     self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
     // 改变NavBar顶层View的颜色
-    self.navigationController.navigationBar.barTintColor = [UIColor clearColor];
+    self.navigationController.navigationBar.barTintColor = COLOR(0, 185, 163, 1);
     // 设置子类的Tabbar风格
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+//    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     // 设置取消ScrollerView自适应属性
     self.automaticallyAdjustsScrollViewInsets = NO;
     // 设置tabbar选中的渲染颜色
-    [self.navigationController.tabBarController.tabBar setTintColor:COLOR(220, 9, 64, 1)];
+//    [self.navigationController.tabBarController.tabBar setTintColor:COLOR(220, 9, 64, 1)];
     // 选择打印当前日志
     [self performSelector:@selector(printNSLog) withObject:nil afterDelay:1.0f];
+    
 }
 
 - (void)SetTheLoadProperties

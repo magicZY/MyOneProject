@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181E713F1EC9566F00DAAD4F /* textViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E713E1EC9566F00DAAD4F /* textViewController.m */; };
 		183B13AC1EAE56C7009DCC28 /* MGPhotoContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B13AB1EAE56C7009DCC28 /* MGPhotoContainerView.m */; };
 		183B13B61EAE5870009DCC28 /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B13B01EAE5870009DCC28 /* SDBrowserImageView.m */; };
 		183B13B71EAE5870009DCC28 /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 183B13B21EAE5870009DCC28 /* SDPhotoBrowser.m */; };
@@ -80,6 +81,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		181E713D1EC9566F00DAAD4F /* textViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textViewController.h; sourceTree = "<group>"; };
+		181E713E1EC9566F00DAAD4F /* textViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = textViewController.m; sourceTree = "<group>"; };
 		183B13AA1EAE56C7009DCC28 /* MGPhotoContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGPhotoContainerView.h; sourceTree = "<group>"; };
 		183B13AB1EAE56C7009DCC28 /* MGPhotoContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGPhotoContainerView.m; sourceTree = "<group>"; };
 		183B13AF1EAE5870009DCC28 /* SDBrowserImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBrowserImageView.h; sourceTree = "<group>"; };
@@ -448,6 +451,8 @@
 				185B23A61EC5A5EA00A5AEF2 /* MGMineSubViewController */,
 				185B239E1EC59F6F00A5AEF2 /* MGMineViewController */,
 				185B23A11EC59F6F00A5AEF2 /* MGMineParentClassScrollViewController */,
+				181E713D1EC9566F00DAAD4F /* textViewController.h */,
+				181E713E1EC9566F00DAAD4F /* textViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -818,6 +823,7 @@
 				1875F0931EC1983F00F42922 /* MLLinkLabel.m in Sources */,
 				18BDE39D1EB872A700BED8DC /* MGOperationMenu.m in Sources */,
 				1875F0961EC1983F00F42922 /* TTTAttributedLabel.m in Sources */,
+				181E713F1EC9566F00DAAD4F /* textViewController.m in Sources */,
 				183B13B71EAE5870009DCC28 /* SDPhotoBrowser.m in Sources */,
 				1875F0911EC1983F00F42922 /* MLLabelLayoutManager.m in Sources */,
 				185828B81EA88B2D00655A5E /* MGBaseTabBarController.m in Sources */,

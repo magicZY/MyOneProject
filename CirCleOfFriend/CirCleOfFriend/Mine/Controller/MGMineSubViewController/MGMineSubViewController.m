@@ -12,6 +12,7 @@
 #define ScreenWidth [UIScreen mainScreen].bounds.size.width
 
 #import "MGMineSubViewController.h"
+#import "textViewController.h"
 
 @interface MGMineSubViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *contentTableView;
@@ -46,6 +47,15 @@
     
     cell.textLabel.text = @"123";
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    textViewController *text = [textViewController new];
+    text.hidesBottomBarWhenPushed = YES;
+    text.view.backgroundColor = [UIColor yellowColor];
+    [self.navigationController pushViewController:text animated:YES];
 }
 #pragma mark - Public
 

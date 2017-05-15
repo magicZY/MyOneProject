@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+//#import <UIKit/UIKit.h>
 
 @interface CircleFriendViewController : BaseViewController
 

@@ -26,10 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     // 添加自控制器
     [self setUpAllChildViewController];
-    
     
     // 设置tabBar
     [self setUpTabBar];
@@ -54,18 +52,19 @@
 - (void)setUpAllChildViewController {
     
     UIViewController *news = [[UIViewController alloc] init];
-    news.view.backgroundColor = [UIColor redColor];
+//    news.view.backgroundColor = [UIColor redColor];
     [self setOneChildViewController:news withImage:[UIImage imageNamed:@"tabbar1"] selectedImage:[UIImage imageNamed:@"tabbar1_selected"] title:@"圈子"];
     
     UIViewController *friends = [[UIViewController alloc] init];
-    friends.view.backgroundColor = [UIColor whiteColor];
+//    friends.view.backgroundColor = [UIColor whiteColor];
     [self setOneChildViewController:friends withImage:[UIImage imageNamed:@"tabbar2"] selectedImage:[UIImage imageNamed:@"tabbar2_selected"] title:@"活动"];
     
     CircleFriendViewController *quiz = [[CircleFriendViewController alloc] init];
-    quiz.view.backgroundColor = [UIColor purpleColor];
+//    quiz.view.backgroundColor = [UIColor purpleColor];
     [self setOneChildViewController:quiz withImage:[UIImage imageNamed:@"tabbar3"] selectedImage:[UIImage imageNamed:@"tabbar3_selected"] title:@"发现"];
     
     MGMineViewController *more = [[MGMineViewController alloc] init];
+//    more.view.backgroundColor = [UIColor whiteColor];
     [self setOneChildViewController:more withImage:[UIImage imageNamed:@"tabbar4"] selectedImage:[UIImage imageNamed:@"tabbar4_selected"] title:@"我的"];
 
 }
