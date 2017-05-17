@@ -42,12 +42,6 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-
-//    [UIView animateWithDuration:0.2 animations:^{
-//        CGPoint frame = self.line.center;
-//        frame.x = self.frame.size.width/(self.controllers.count*2) +(self.frame.size.width/self.controllers.count)*(self.segmentScrollView.contentOffset.x/self.frame.size.width);
-//        self.line.center = frame;
-//    }];
     
     int currentIndex = roundf(scrollView.contentOffset.x/self.width);
     
