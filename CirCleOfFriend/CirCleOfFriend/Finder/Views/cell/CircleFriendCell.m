@@ -59,6 +59,8 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
     self.timeLabel.text = @"";
     
     [self.operationButton setImage:[UIImage imageNamed:@"OperateMore"] forState:UIControlStateNormal];
+    
+    self.operationMenu.show = NO;
 }
 
 - (void)awakeFromNib {
@@ -235,6 +237,7 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
         .heightIs(36)
         .centerYEqualToView(_operationButton)
         .widthIs(0);
+        
     }
     
     return _operationMenu;
@@ -314,6 +317,7 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
 
 - (void)operationClicked:(UIButton *)sender
 {
+    
     self.operationMenu.show = !self.operationMenu.isShowing;
 }
 

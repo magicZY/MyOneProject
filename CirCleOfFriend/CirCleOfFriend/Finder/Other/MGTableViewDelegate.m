@@ -70,10 +70,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id item = [self itemAtIndexPath:indexPath] ;
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.MGCellIdentifier];
+    CircleFriendCell *cell = [[CircleFriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:self.MGCellIdentifier];
+//    [tableView dequeueReusableCellWithIdentifier:self.MGCellIdentifier];
+
     if (!cell) {
         [UITableViewCell registerTableView:tableView registerClass:[CircleFriendCell class] reuseIdentifier:self.MGCellIdentifier];
-        cell = [tableView dequeueReusableCellWithIdentifier:self.MGCellIdentifier];
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:self.MGCellIdentifier];
 
     }
     self.configureCellBlock(indexPath,item,cell);
