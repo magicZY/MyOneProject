@@ -5,4 +5,4 @@
 
 #项目效果图
 
-![效果图.gif](https://github.com/magicZY/MyOneProject/tree/master/CirCleOfFriend/效果图.gif)
+![效果图](https://github.com/magicZY/MyOneProject/tree/master/CirCleOfFriend/效果图.gif "效果图")
