@@ -15,9 +15,7 @@
 CGFloat maxContentLabelHeight = 0; // 根据具体font而定
 
 @interface CircleFriendCell()
-{
-    
-}
+
 @property (nonatomic, strong) UIImageView *avatar; //头像
 @property (nonatomic, strong) UILabel *nameLabel; //名字
 @property (nonatomic, strong) UILabel *contentLabel; //内容
@@ -325,8 +323,7 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
         indexPath:(NSIndexPath *)indexPath
 {
     CircleFriendModel *myObj = (CircleFriendModel *)obj;
-    CircleFriendCell *mycell = (CircleFriendCell *)cell;
-    
+//    CircleFriendCell *mycell = (CircleFriendCell *)cell;
     self.dataModel = myObj;
     
 }
@@ -337,11 +334,8 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
 {
     
     CGFloat cellHeight = [table cellHeightForIndexPath:indexPath model:obj keyPath:@"dataModel" cellClass:[CircleFriendCell class] contentViewWidth:[[CircleFriendCell alloc] cellContentViewWith]];
-    //
-    return cellHeight;
     
-    //    return 500;
-    //    ((CircleFriendModel *)obj).height ;
+    return cellHeight;
 }
 
 - (CGFloat)cellContentViewWith
