@@ -11,19 +11,25 @@
 #import "CircleFriendCell.h"
 #import "CircleFriendModel.h"
 
+//新加入
+#import "MGTableViewDelegate.h"
+#import "UITableViewCell+Extension.h"
 
-@interface CircleFriendViewController ()<UITableViewDelegate,UITableViewDataSource,CircleFriendCellDelegate,UITextFieldDelegate,UIScrollViewDelegate>
+@interface CircleFriendViewController ()
+//<CircleFriendCellDelegate,UITextFieldDelegate,UIScrollViewDelegate>
+//<UITableViewDelegate,UITableViewDataSource,CircleFriendCellDelegate,UITextFieldDelegate,UIScrollViewDelegate>
 {
-    CGFloat keybordHeight;
-    NSIndexPath *_currentEditingIndexthPath;
-    BOOL _isReplayingComment;
-    NSString *_commentToUser;
-    NSString *_commentToUserId;
+    //    CGFloat keybordHeight;
+    //    NSIndexPath *_currentEditingIndexthPath;
+    //    BOOL _isReplayingComment;
+    //    NSString *_commentToUser;
+    //    NSString *_commentToUserId;
     
 }
 @property (nonatomic, strong) UITableView *circleFriendTableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
-@property (nonatomic, strong) UITextField *commentTextField;
+//@property (nonatomic, strong) UITextField *commentTextField;
+@property (nonatomic, strong) MGTableViewDelegate *tableHander;
 @end
 
 @implementation CircleFriendViewController
@@ -37,162 +43,183 @@
     
     [self setNavigationBar:@"朋友圈"];
     
-    [self addNSNotificationCenter];
+    //    [self addNSNotificationCenter];
     
     [self.dataSource addObjectsFromArray:[self createModelWithCount:10]];
     
-    self.circleFriendTableView.backgroundColor = [UIColor whiteColor];
-    
+    [self setupTableView];
 }
 
 
-#pragma mark - UITableViewDelegate
+//#pragma mark - UITableViewDelegate
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    return self.dataSource.count;
+//}
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    static NSString *identifier = @"circleCell";
+//
+//    CircleFriendCell *cell = [[CircleFriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+//
+//    cell.delegate = self;
+//
+//    return cell;
+//}
+//
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(CircleFriendCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//
+//    cell.indexPath = indexPath;
+//
+//    __weak typeof(self) weakSelf = self;
+//    if (!cell.moreButtonClickedBlock) {
+//        [cell setMoreButtonClickedBlock:^(NSIndexPath *indexPath) {
+//            CircleFriendModel *model = weakSelf.dataSource[indexPath.row];
+//            model.isOpening = !model.isOpening;
+//            [weakSelf.circleFriendTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//        }];
+//
+//        cell.delegate = self;
+//    }
+//
+//    [cell useCellFrameCacheWithIndexPath:indexPath tableView:tableView];
+//
+//    cell.dataModel = self.dataSource[indexPath.row];
+//
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    id model = self.dataSource[indexPath.row];
+//
+//    CGFloat cellHeight = [tableView cellHeightForIndexPath:indexPath model:model keyPath:@"dataModel" cellClass:[CircleFriendCell class] contentViewWidth:[self cellContentViewWith]];
+//
+//    return cellHeight;
+//
+//}
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.dataSource.count;
-}
+//#pragma mark - CircleFriendCellDelegate
+//- (void)didClickLikeInCell:(UITableViewCell *)cell
+//{
+//    NSLog(@"-----like");
+//
+//    NSIndexPath *indexPath = [self.circleFriendTableView indexPathForCell:cell];
+//    CircleFriendModel *model = self.dataSource[indexPath.row];
+//    NSMutableArray *temp = [NSMutableArray arrayWithArray:model.likeAr];
+//
+//    if (!model.isLiked) {
+//
+//        CircleFriendLikeModel *likeModel = [CircleFriendLikeModel new];
+//        likeModel.likeUserName = @"金三胖";
+//        likeModel.userId = @"MG_iOS";
+//        [temp addObject:likeModel];
+//        model.liked = YES;
+//    }else {
+//        CircleFriendLikeModel *tempLikeModel = nil;
+//        for (CircleFriendLikeModel *likeModel in model.likeAr) {
+//            if ([likeModel.userId isEqualToString:@"MG_iOS"]) {
+//                tempLikeModel = likeModel;
+//                break;
+//            }
+//        }
+//        [temp removeObject:tempLikeModel];
+//        model.liked = NO;
+//    }
+//
+//    model.likeAr = [temp copy];
+//
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self.circleFriendTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+//    });
+//}
+//- (void)didClickcCommentInCell:(UITableViewCell *)cell
+//{
+//    NSLog(@"-----comment");
+//    [self.commentTextField becomeFirstResponder];
+//
+//    _currentEditingIndexthPath = [self.circleFriendTableView indexPathForCell:cell];
+//
+//    [self adjustTableViewToFitKeyboard];
+//}
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *identifier = @"circleCell";
-    
-    CircleFriendCell *cell = [[CircleFriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    
-    cell.delegate = self;
-    
-    return cell;
-}
+//#pragma mark - UIScrollViewDelegate
+//- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+//{
+//    NSLog(@"beaginScorller");
+//    [self.commentTextField resignFirstResponder];
+//}
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(CircleFriendCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-
-    cell.indexPath = indexPath;
-    
-    __weak typeof(self) weakSelf = self;
-    if (!cell.moreButtonClickedBlock) {
-        [cell setMoreButtonClickedBlock:^(NSIndexPath *indexPath) {
-            CircleFriendModel *model = weakSelf.dataSource[indexPath.row];
-            model.isOpening = !model.isOpening;
-            [weakSelf.circleFriendTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        }];
-        
-        cell.delegate = self;
-    }
-    
-    [cell useCellFrameCacheWithIndexPath:indexPath tableView:tableView];
-    
-    cell.dataModel = self.dataSource[indexPath.row];
-    
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    id model = self.dataSource[indexPath.row];
-    
-    CGFloat cellHeight = [tableView cellHeightForIndexPath:indexPath model:model keyPath:@"dataModel" cellClass:[CircleFriendCell class] contentViewWidth:[self cellContentViewWith]];
-    
-    return cellHeight;
-    
-}
-
-#pragma mark - CircleFriendCellDelegate
-- (void)didClickLikeInCell:(UITableViewCell *)cell
-{
-    NSLog(@"-----like");
-    
-    NSIndexPath *indexPath = [self.circleFriendTableView indexPathForCell:cell];
-    CircleFriendModel *model = self.dataSource[indexPath.row];
-    NSMutableArray *temp = [NSMutableArray arrayWithArray:model.likeAr];
-    
-    if (!model.isLiked) {
-        
-        CircleFriendLikeModel *likeModel = [CircleFriendLikeModel new];
-        likeModel.likeUserName = @"金三胖";
-        likeModel.userId = @"MG_iOS";
-        [temp addObject:likeModel];
-        model.liked = YES;
-    }else {
-        CircleFriendLikeModel *tempLikeModel = nil;
-        for (CircleFriendLikeModel *likeModel in model.likeAr) {
-            if ([likeModel.userId isEqualToString:@"MG_iOS"]) {
-                tempLikeModel = likeModel;
-                break;
-            }
-        }
-        [temp removeObject:tempLikeModel];
-        model.liked = NO;
-    }
-    
-    model.likeAr = [temp copy];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.circleFriendTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-    });
-}
-- (void)didClickcCommentInCell:(UITableViewCell *)cell
-{
-    NSLog(@"-----comment");
-    [self.commentTextField becomeFirstResponder];
-    
-    _currentEditingIndexthPath = [self.circleFriendTableView indexPathForCell:cell];
-    
-    [self adjustTableViewToFitKeyboard];
-}
-
-#pragma mark - UIScrollViewDelegate
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    NSLog(@"beaginScorller");
-    [self.commentTextField resignFirstResponder];
-}
-
-#pragma mark - UITextFieldDelegate
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    if (textField.text.length) {
-        [self.commentTextField resignFirstResponder];
-        
-        CircleFriendModel *model = self.dataSource[_currentEditingIndexthPath.row];
-        NSMutableArray *temp = [NSMutableArray new];
-        [temp addObjectsFromArray:model.commentsAr];
-        CircleFriendCommentModel *commentItemModel = [CircleFriendCommentModel new];
-        
-        if (_isReplayingComment) {
-            commentItemModel.commentsUsername = @"金三胖";
-            commentItemModel.commentsUserId = @"MG_iOS";
-            commentItemModel.toUsername = _commentToUser;
-            commentItemModel.toUserid = _commentToUserId;
-            commentItemModel.commentsContent = textField.text;
-            
-            _isReplayingComment = NO;
-        } else {
-            commentItemModel.commentsUsername = @"金三胖";
-            commentItemModel.commentsContent = textField.text;
-            commentItemModel.commentsUserId = @"MG_iOS";
-        }
-        [temp addObject:commentItemModel];
-        model.commentsAr = [temp copy];
-        [self.circleFriendTableView reloadRowsAtIndexPaths:@[_currentEditingIndexthPath] withRowAnimation:UITableViewRowAnimationNone];
-        
-        _commentTextField.text = @"";
-        _commentTextField.placeholder = nil;
-        
-        return YES;
-    }
-    return NO;
-}
+//#pragma mark - UITextFieldDelegate
+//
+//- (BOOL)textFieldShouldReturn:(UITextField *)textField
+//{
+//    if (textField.text.length) {
+//        [self.commentTextField resignFirstResponder];
+//
+//        CircleFriendModel *model = self.dataSource[_currentEditingIndexthPath.row];
+//        NSMutableArray *temp = [NSMutableArray new];
+//        [temp addObjectsFromArray:model.commentsAr];
+//        CircleFriendCommentModel *commentItemModel = [CircleFriendCommentModel new];
+//
+//        if (_isReplayingComment) {
+//            commentItemModel.commentsUsername = @"金三胖";
+//            commentItemModel.commentsUserId = @"MG_iOS";
+//            commentItemModel.toUsername = _commentToUser;
+//            commentItemModel.toUserid = _commentToUserId;
+//            commentItemModel.commentsContent = textField.text;
+//
+//            _isReplayingComment = NO;
+//        } else {
+//            commentItemModel.commentsUsername = @"金三胖";
+//            commentItemModel.commentsContent = textField.text;
+//            commentItemModel.commentsUserId = @"MG_iOS";
+//        }
+//        [temp addObject:commentItemModel];
+//        model.commentsAr = [temp copy];
+//        [self.circleFriendTableView reloadRowsAtIndexPaths:@[_currentEditingIndexthPath] withRowAnimation:UITableViewRowAnimationNone];
+//
+//        _commentTextField.text = @"";
+//        _commentTextField.placeholder = nil;
+//
+//        return YES;
+//    }
+//    return NO;
+//}
 
 
 #pragma mark - Public
 
 #pragma mark - Private
 
-- (void)addNSNotificationCenter
+//初始化tableview
+- (void)setupTableView
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardNotification:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    self.circleFriendTableView.backgroundColor = [UIColor whiteColor];
+    
+    TableViewCellConfigureBlock configureCell = ^(NSIndexPath *indexPath, CircleFriendModel *obj, UITableViewCell *cell) {
+        [cell configure:cell customObj:obj indexPath:indexPath];
+    } ;
+    
+    CellHeightBlock heightBlock = ^CGFloat(NSIndexPath *indexPath, id item) {
+        return [CircleFriendCell getCellHeightWithTableView:self.circleFriendTableView CustomObj:item indexPath:indexPath];
+    };
+    
+    DidSelectCellBlock selectedBlock = ^(NSIndexPath *indexPath, id item) {
+        NSLog(@"click row : %@",@(indexPath.row)) ;
+    } ;
+    
+    self.tableHander = [[MGTableViewDelegate alloc] initWithItems:self.dataSource cellIdentifier:@"circleCell" configureCellBlick:configureCell cellHeightBlock:heightBlock didSelectBlock:selectedBlock];
+    
+    [self.tableHander handleTableViewDatasourceAndDelegate:self.circleFriendTableView];
 }
+
+//- (void)addNSNotificationCenter
+//{
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardNotification:) name:UIKeyboardWillChangeFrameNotification object:nil];
+//}
 
 - (NSArray *)createModelWithCount:(NSInteger)count
 {
@@ -304,59 +331,59 @@
     return [resArr copy];
 }
 
-- (CGFloat)cellContentViewWith
-{
-    CGFloat width = [UIScreen mainScreen].bounds.size.width;
-    
-    // 适配ios7横屏
-    if ([UIApplication sharedApplication].statusBarOrientation != UIInterfaceOrientationPortrait && [[UIDevice currentDevice].systemVersion floatValue] < 8) {
-        width = [UIScreen mainScreen].bounds.size.height;
-    }
-    return width;
-}
+//- (CGFloat)cellContentViewWith
+//{
+//    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+//
+//    // 适配ios7横屏
+//    if ([UIApplication sharedApplication].statusBarOrientation != UIInterfaceOrientationPortrait && [[UIDevice currentDevice].systemVersion floatValue] < 8) {
+//        width = [UIScreen mainScreen].bounds.size.height;
+//    }
+//    return width;
+//}
 
-- (void)keyboardNotification:(NSNotification *)notification
-{
-    NSDictionary *dict = notification.userInfo;
-    CGRect rect = [dict[@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
-    
-    CGRect textFieldRect = CGRectMake(0, rect.origin.y - 40, rect.size.width, 40);
-    if (rect.origin.y == [UIScreen mainScreen].bounds.size.height) {
-        textFieldRect = rect;
-    }
-    
-    [UIView animateWithDuration:0.25 animations:^{
-        _commentTextField.frame = textFieldRect;
-    }];
-    
-    CGFloat h = rect.size.height + 40;
-    if (keybordHeight != h) {
-        keybordHeight = h;
-        [self adjustTableViewToFitKeyboard];
-    }
-}
+//- (void)keyboardNotification:(NSNotification *)notification
+//{
+//    NSDictionary *dict = notification.userInfo;
+//    CGRect rect = [dict[@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
+//
+//    CGRect textFieldRect = CGRectMake(0, rect.origin.y - 40, rect.size.width, 40);
+//    if (rect.origin.y == [UIScreen mainScreen].bounds.size.height) {
+//        textFieldRect = rect;
+//    }
+//
+//    [UIView animateWithDuration:0.25 animations:^{
+//        _commentTextField.frame = textFieldRect;
+//    }];
+//
+//    CGFloat h = rect.size.height + 40;
+//    if (keybordHeight != h) {
+//        keybordHeight = h;
+//        [self adjustTableViewToFitKeyboard];
+//    }
+//}
 
-- (void)adjustTableViewToFitKeyboard
-{
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    UITableViewCell *cell = [_circleFriendTableView cellForRowAtIndexPath:_currentEditingIndexthPath];
-    CGRect rect = [cell.superview convertRect:cell.frame toView:window];
-    [self adjustTableViewToFitKeyboardWithRect:rect];
-}
-
-- (void)adjustTableViewToFitKeyboardWithRect:(CGRect)rect
-{
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    CGFloat delta = CGRectGetMaxY(rect) - (window.bounds.size.height - keybordHeight);
-    
-    CGPoint offset = _circleFriendTableView.contentOffset;
-    offset.y += delta;
-    if (offset.y < 0) {
-        offset.y = 0;
-    }
-    
-    [_circleFriendTableView setContentOffset:offset animated:YES];
-}
+//- (void)adjustTableViewToFitKeyboard
+//{
+//    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+//    UITableViewCell *cell = [_circleFriendTableView cellForRowAtIndexPath:_currentEditingIndexthPath];
+//    CGRect rect = [cell.superview convertRect:cell.frame toView:window];
+//    [self adjustTableViewToFitKeyboardWithRect:rect];
+//}
+//
+//- (void)adjustTableViewToFitKeyboardWithRect:(CGRect)rect
+//{
+//    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+//    CGFloat delta = CGRectGetMaxY(rect) - (window.bounds.size.height - keybordHeight);
+//
+//    CGPoint offset = _circleFriendTableView.contentOffset;
+//    offset.y += delta;
+//    if (offset.y < 0) {
+//        offset.y = 0;
+//    }
+//
+//    [_circleFriendTableView setContentOffset:offset animated:YES];
+//}
 
 
 #pragma mark - Getter
@@ -368,9 +395,9 @@
         
         _circleFriendTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
-        _circleFriendTableView.delegate = self;
-        
-        _circleFriendTableView.dataSource = self;
+        //        _circleFriendTableView.delegate = self;
+        //
+        //        _circleFriendTableView.dataSource = self;
         
         [self.view addSubview:_circleFriendTableView];
         
@@ -396,28 +423,28 @@
     return _dataSource;
 }
 
-- (UITextField *)commentTextField
-{
-    if (!_commentTextField) {
-        
-        _commentTextField = [UITextField new];
-        _commentTextField.returnKeyType = UIReturnKeyDone;
-        _commentTextField.delegate = self;
-        _commentTextField.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.8].CGColor;
-        _commentTextField.layer.borderWidth = 1;
-        _commentTextField.backgroundColor = [UIColor grayColor];
-        
-        _commentTextField.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, self.view.width_sd, 40);
-
-        [[UIApplication sharedApplication].keyWindow addSubview:_commentTextField];
-        
-        [_commentTextField becomeFirstResponder];
-        [_commentTextField resignFirstResponder];
-        
-    }
-    
-    return _commentTextField;
-}
+//- (UITextField *)commentTextField
+//{
+//    if (!_commentTextField) {
+//
+//        _commentTextField = [UITextField new];
+//        _commentTextField.returnKeyType = UIReturnKeyDone;
+//        _commentTextField.delegate = self;
+//        _commentTextField.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.8].CGColor;
+//        _commentTextField.layer.borderWidth = 1;
+//        _commentTextField.backgroundColor = [UIColor grayColor];
+//
+//        _commentTextField.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, self.view.width_sd, 40);
+//
+//        [[UIApplication sharedApplication].keyWindow addSubview:_commentTextField];
+//
+//        [_commentTextField becomeFirstResponder];
+//        [_commentTextField resignFirstResponder];
+//
+//    }
+//
+//    return _commentTextField;
+//}
 
 #pragma mark - Setter
 

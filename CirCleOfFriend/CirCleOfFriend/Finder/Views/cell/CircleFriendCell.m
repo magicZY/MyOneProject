@@ -7,7 +7,7 @@
 //
 
 #import "CircleFriendCell.h"
-#import "UIView+SDAutoLayout.h"
+#import "SDAutoLayout.h"
 #import "MGPhotoContainerView.h"
 #import "MGOperationMenu.h"
 #import "MGCommentView.h"
@@ -36,8 +36,8 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-//        //设置主题
-//        [self configTheme];
+        //        //设置主题
+        //        [self configTheme];
         
         [self setup];
         
@@ -70,7 +70,7 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     
 }
 
@@ -150,7 +150,7 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
     }
     
     return _moreButton;
-
+    
 }
 
 - (MGPhotoContainerView *)picContainerView
@@ -265,7 +265,7 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
 {
     _dataModel = dataModel;
     [self.commentView setUpWithLikeItemsArray:dataModel.likeAr andCommentItemsArray:dataModel.commentsAr];
-
+    
     _avatar.image = [UIImage imageNamed:dataModel.avatar];
     _nameLabel.text = dataModel.username;
     _contentLabel.text = dataModel.content;
@@ -298,7 +298,7 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
     UIView *bottomView = nil;
     
     if (!dataModel.likeAr.count && !dataModel.commentsAr.count) bottomView = _timeLabel;
-        else bottomView = _commentView;
+    else bottomView = _commentView;
     
     [self setupAutoHeightWithBottomView:bottomView bottomMargin:15];
     
@@ -318,4 +318,41 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
 {
     self.operationMenu.show = !self.operationMenu.isShowing;
 }
+
+#pragma mark - super Func
+- (void)configure:(UITableViewCell *)cell
+        customObj:(id)obj
+        indexPath:(NSIndexPath *)indexPath
+{
+    CircleFriendModel *myObj = (CircleFriendModel *)obj;
+    CircleFriendCell *mycell = (CircleFriendCell *)cell;
+    
+    self.dataModel = myObj;
+    
+}
+
++ (CGFloat)getCellHeightWithTableView:(UITableView *)table
+                            CustomObj:(id)obj
+                            indexPath:(NSIndexPath *)indexPath
+{
+    
+    CGFloat cellHeight = [table cellHeightForIndexPath:indexPath model:obj keyPath:@"dataModel" cellClass:[CircleFriendCell class] contentViewWidth:[[CircleFriendCell alloc] cellContentViewWith]];
+    //
+    return cellHeight;
+    
+    //    return 500;
+    //    ((CircleFriendModel *)obj).height ;
+}
+
+- (CGFloat)cellContentViewWith
+{
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    
+    // 适配ios7横屏
+    if ([UIApplication sharedApplication].statusBarOrientation != UIInterfaceOrientationPortrait && [[UIDevice currentDevice].systemVersion floatValue] < 8) {
+        width = [UIScreen mainScreen].bounds.size.height;
+    }
+    return width;
+}
+
 @end

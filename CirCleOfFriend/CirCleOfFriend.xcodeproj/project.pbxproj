@@ -87,6 +87,8 @@
 		18A87E401ECBF4D3003FFA1E /* run8.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A87E251ECBF4D3003FFA1E /* run8.png */; };
 		18A87E411ECBF4D3003FFA1E /* run9.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A87E261ECBF4D3003FFA1E /* run9.png */; };
 		18A87E441ECBF4F7003FFA1E /* GuidePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A87E431ECBF4F7003FFA1E /* GuidePageViewController.m */; };
+		18A87E511ECD3E06003FFA1E /* MGTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A87E501ECD3E06003FFA1E /* MGTableViewDelegate.m */; };
+		18A87E551ECD3E2D003FFA1E /* UITableViewCell+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A87E541ECD3E2D003FFA1E /* UITableViewCell+Extension.m */; };
 		18BDE39D1EB872A700BED8DC /* MGOperationMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BDE39C1EB872A700BED8DC /* MGOperationMenu.m */; };
 		2129F591954E4EAA6D6E8980 /* libPods-CirCleOfFriend.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2335360D6980547DCAD2A2B /* libPods-CirCleOfFriend.a */; };
 /* End PBXBuildFile section */
@@ -230,6 +232,10 @@
 		18A87E261ECBF4D3003FFA1E /* run9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = run9.png; sourceTree = "<group>"; };
 		18A87E421ECBF4F7003FFA1E /* GuidePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidePageViewController.h; sourceTree = "<group>"; };
 		18A87E431ECBF4F7003FFA1E /* GuidePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidePageViewController.m; sourceTree = "<group>"; };
+		18A87E4F1ECD3E06003FFA1E /* MGTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGTableViewDelegate.h; sourceTree = "<group>"; };
+		18A87E501ECD3E06003FFA1E /* MGTableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTableViewDelegate.m; sourceTree = "<group>"; };
+		18A87E531ECD3E2D003FFA1E /* UITableViewCell+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Extension.h"; sourceTree = "<group>"; };
+		18A87E541ECD3E2D003FFA1E /* UITableViewCell+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Extension.m"; sourceTree = "<group>"; };
 		18BDE39B1EB872A700BED8DC /* MGOperationMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGOperationMenu.h; sourceTree = "<group>"; };
 		18BDE39C1EB872A700BED8DC /* MGOperationMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGOperationMenu.m; sourceTree = "<group>"; };
 		6F6ED07EE0618D5EE3A66F0D /* Pods-CirCleOfFriend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CirCleOfFriend.release.xcconfig"; path = "Pods/Target Support Files/Pods-CirCleOfFriend/Pods-CirCleOfFriend.release.xcconfig"; sourceTree = "<group>"; };
@@ -320,6 +326,7 @@
 		1858287D1EA87E4600655A5E /* CirCleOfFriend */ = {
 			isa = PBXGroup;
 			children = (
+				18A87E521ECD3E2D003FFA1E /* Extension */,
 				18A87E081ECBF490003FFA1E /* GuidePage */,
 				183B13AD1EAE5870009DCC28 /* Lib */,
 				185828D61EADA10400655A5E /* resource */,
@@ -399,6 +406,7 @@
 		185828C01EA8C2D600655A5E /* Finder */ = {
 			isa = PBXGroup;
 			children = (
+				18A87E4E1ECD3E06003FFA1E /* Other */,
 				185828C11EA8C3E700655A5E /* Views */,
 				185828C21EA8C3E700655A5E /* Model */,
 				185828C31EA8C3E700655A5E /* Controller */,
@@ -713,6 +721,24 @@
 			path = gif;
 			sourceTree = "<group>";
 		};
+		18A87E4E1ECD3E06003FFA1E /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				18A87E4F1ECD3E06003FFA1E /* MGTableViewDelegate.h */,
+				18A87E501ECD3E06003FFA1E /* MGTableViewDelegate.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		18A87E521ECD3E2D003FFA1E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				18A87E531ECD3E2D003FFA1E /* UITableViewCell+Extension.h */,
+				18A87E541ECD3E2D003FFA1E /* UITableViewCell+Extension.m */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		18BDE39A1EB8722000BED8DC /* MGOperationMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -978,6 +1004,7 @@
 				1875F0901EC1983F00F42922 /* NSString+MLExpression.m in Sources */,
 				185828D41EA9FE7A00655A5E /* CircleFriendModel.m in Sources */,
 				1875F0891EC1983F00F42922 /* MLEmojiLabel.m in Sources */,
+				18A87E511ECD3E06003FFA1E /* MGTableViewDelegate.m in Sources */,
 				185828CA1EA9B6FE00655A5E /* CircleFriendViewController.m in Sources */,
 				185B23A21EC59F6F00A5AEF2 /* MGMineViewController.m in Sources */,
 				1875F0921EC1983F00F42922 /* MLLabel.m in Sources */,
@@ -997,6 +1024,7 @@
 				18626CCE1EC3253C00830CF7 /* MGMineHeaderView.m in Sources */,
 				185828801EA87E4600655A5E /* main.m in Sources */,
 				183B13B81EAE5870009DCC28 /* SDWaitingView.m in Sources */,
+				18A87E551ECD3E2D003FFA1E /* UITableViewCell+Extension.m in Sources */,
 				185828D11EA9F81700655A5E /* CircleFriendCell.m in Sources */,
 				183B13AC1EAE56C7009DCC28 /* MGPhotoContainerView.m in Sources */,
 			);
