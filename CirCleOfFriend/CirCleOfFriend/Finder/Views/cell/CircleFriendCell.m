@@ -60,7 +60,8 @@ CGFloat maxContentLabelHeight = 0; // 根据具体font而定
     
     [self.operationButton setImage:[UIImage imageNamed:@"OperateMore"] forState:UIControlStateNormal];
     
-    self.operationMenu.show = NO;
+    self.operationMenu.backgroundColor = [UIColor colorWithRed:69/255.0 green:74/255.0 blue:76/255.0 alpha:1.0];
+
 }
 
 - (void)awakeFromNib {
